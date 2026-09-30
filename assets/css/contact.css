@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Company Profile Website - Contact Page Stylesheet
+   ========================================================================== */
+
+/* Contact Info Quick Cards */
+.contact-info-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 35px 28px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    text-align: center;
+    height: 100%;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-hover);
+    border-color: var(--theme);
+}
+
+.contact-info-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: var(--theme-light);
+    color: var(--theme);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.contact-info-card:hover .contact-info-icon {
+    background: var(--theme);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.contact-info-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.contact-info-card p,
+.contact-info-card a {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.contact-info-card a:hover {
+    color: var(--theme);
+}
+
+/* Contact Main Form Box */
+.contact-form-wrapper {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 45px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--box-shadow);
+}
+
+.contact-form-wrapper .form-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--header);
+    margin-bottom: 8px;
+}
+
+.contact-form-wrapper .form-control,
+.contact-form-wrapper .form-select {
+    padding: 13px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.92rem;
+    color: var(--header);
+    transition: var(--transition);
+}
+
+.contact-form-wrapper .form-control:focus,
+.contact-form-wrapper .form-select:focus {
+    border-color: var(--theme);
+    box-shadow: 0 0 0 4px var(--theme-light);
+}
+
+/* Location Card / Map Embed */
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-light);
+    height: 450px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Office Hours Badge Card */
+.office-hours-card {
+    background: linear-gradient(135deg, var(--header) 0%, var(--header2) 100%);
+    border-radius: 18px;
+    padding: 35px;
+    color: var(--white);
+    height: 100%;
+}
+
+.office-hours-card h4 {
+    color: var(--white);
+    font-size: 1.35rem;
+    margin-bottom: 20px;
+}
+
+.office-hours-card ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.92rem;
+}
+
+.office-hours-card ul li:last-child {
+    border-bottom: none;
+}
+
+.office-hours-card ul li span.day {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.office-hours-card ul li span.time {
+    color: var(--theme);
+    font-weight: 700;
+}

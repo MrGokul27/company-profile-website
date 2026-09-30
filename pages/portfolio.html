@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Case Studies - Stackly Corporate Profile</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/logoStackly.webp" type="image/webp">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 Icons (Latest CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Main Theme CSS & Portfolio Page CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+</head>
+<body>
+
+    <!-- Common Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- ==========================================
+         Section 1: Common Subpage Banner
+         ========================================== -->
+    <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80');">
+        <div class="container">
+            <div class="page-banner-content">
+                <div class="custom-breadcrumb mb-3">
+                    <a href="../index.html">Home</a>
+                    <span class="separator">/</span>
+                    <span class="current">Portfolio</span>
+                </div>
+                <h1>Selected Case Studies & Proven Results</h1>
+                <p>
+                    Explore our track record of delivering multi-million pound enterprise transformations, market entry breakthroughs, and financial restructuring across global industries.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 2: Filterable Portfolio Gallery
+         ========================================== -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="sub-title"><i class="fa-solid fa-briefcase"></i> Client Showcase</span>
+                <h2>Demonstrated Enterprise Outcomes</h2>
+                <p>Filter by strategic practice to explore relevant client engagements.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="portfolio-filter-nav">
+                <button class="filter-btn active" data-filter="all">All Engagements</button>
+                <button class="filter-btn" data-filter="digital">Digital & AI</button>
+                <button class="filter-btn" data-filter="strategy">Strategy & M&A</button>
+                <button class="filter-btn" data-filter="esg">ESG & Sustainability</button>
+                <button class="filter-btn" data-filter="process">Process Engineering</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="row g-4" id="portfolioGallery">
+                <!-- Item 1 (Digital) -->
+                <div class="col-lg-4 col-md-6 portfolio-filter-item digital">
+                    <div class="portfolio-card">
+                        <div class="portfolio-thumb">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Core Banking Cloud">
+                            <span class="portfolio-tag">Digital Transformation</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>European FinTech Core Replatforming</h4>
+                            <p>Migrated monolithic core to distributed cloud microservices, handling 15M daily requests with zero downtime.</p>
+                            <span class="portfolio-result-pill"><i class="fa-solid fa-bolt"></i> -68% Cloud Compute Costs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 (Strategy) -->
+                <div class="col-lg-4 col-md-6 portfolio-filter-item strategy">
+                    <div class="portfolio-card">
+                        <div class="portfolio-thumb">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Cross Border M&A">
+                            <span class="portfolio-tag">Strategy & M&A</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>£340M Cross-Border Industrial Merger</h4>
+                            <p>Structured post-merger governance across 4 European jurisdictions, consolidating supply pipelines within 9 months.</p>
+                            <span class="portfolio-result-pill"><i class="fa-solid fa-chart-line"></i> £42M Synergy Realized</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 (ESG) -->
+                <div class="col-lg-4 col-md-6 portfolio-filter-item esg">
+                    <div class="portfolio-card">
+                        <div class="portfolio-thumb">
+                            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" alt="Clean Energy Transition">
+                            <span class="portfolio-tag">ESG & Sustainability</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Nordic Clean Energy Grid Optimization</h4>
+                            <p>Designed carbon accounting algorithms and predictive solar/wind distribution software for 2.4M households.</p>
+                            <span class="portfolio-result-pill"><i class="fa-solid fa-leaf"></i> -410,000 Tons CO2/Yr</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 (Process) -->
+                <div class="col-lg-4 col-md-6 portfolio-filter-item process">
+                    <div class="portfolio-card">
+                        <div class="portfolio-thumb">
+                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Advanced Manufacturing QA">
+                            <span class="portfolio-tag">Process Engineering</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Aerospace Component Quality Automation</h4>
+                            <p>Deployed computer vision defect detection sensors on precision assembly lines with Lean Six Sigma standards.</p>
+                            <span class="portfolio-result-pill"><i class="fa-solid fa-shield-check"></i> 99.98% Part Yield Rate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 (Digital) -->
+                <div class="col-lg-4 col-md-6 portfolio-filter-item digital">
+                    <div class="portfolio-card">
+                        <div class="portfolio-thumb">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Enterprise AI Agent">
+                            <span class="portfolio-tag">Digital & AI</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>Multi-Agent Insurance Claims Copilot</h4>
+                            <p>Trained localized LLM pipelines parsing commercial policy documents, reducing claim settlement times from 12 days to 4 hours.</p>
+                            <span class="portfolio-result-pill"><i class="fa-solid fa-clock"></i> 85% Faster Processing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 (Strategy) -->
+                <div class="col-lg-4 col-md-6 portfolio-filter-item strategy">
+                    <div class="portfolio-card">
+                        <div class="portfolio-thumb">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Global Market Entry">
+                            <span class="portfolio-tag">Strategy & M&A</span>
+                        </div>
+                        <div class="portfolio-info">
+                            <h4>US Medical Devices UK & EU Market Expansion</h4>
+                            <p>Navigated MHRA & CE medical certifications and built commercial distribution contracts with 18 private hospital groups.</p>
+                            <span class="portfolio-result-pill"><i class="fa-solid fa-earth-europe"></i> +$55M First-Year ARR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 3: Deep Dive Case Study Spotlight 1
+         ========================================== -->
+    <section class="section-padding section-bg">
+        <div class="container">
+            <div class="case-study-hero-card">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="case-study-img">
+                            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=1000&q=80" alt="Banking Core Modernization">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="case-study-content">
+                            <span class="case-study-badge">Flagship Deep-Dive</span>
+                            <h3>Global Commercial Banking Core Modernization</h3>
+                            <p>
+                                A premier financial institution with over $18B in client assets was hindered by legacy mainframe architecture. Stackly designed and executed a multi-phase microservices migration with zero disruption to consumer payments.
+                            </p>
+                            <div class="case-metrics-row">
+                                <div class="metric-stat">
+                                    <h4>64%</h4>
+                                    <p>Latency Reduction</p>
+                                </div>
+                                <div class="metric-stat">
+                                    <h4>£18.5M</h4>
+                                    <p>Annual Run-Rate Savings</p>
+                                </div>
+                                <div class="metric-stat">
+                                    <h4>99.999%</h4>
+                                    <p>System Availability</p>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="theme-btn">Request Full Case Brief <i class="fa-solid fa-file-lines ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 4: Deep Dive Case Study Spotlight 2
+         ========================================== -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="case-study-hero-card">
+                <div class="row g-0 align-items-center flex-lg-row-reverse">
+                    <div class="col-lg-6">
+                        <div class="case-study-img">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80" alt="Logistics Fleet AI">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="case-study-content">
+                            <span class="case-study-badge">Logistics Transformation</span>
+                            <h3>Transatlantic Supply Chain AI Routing & Carbon Abatement</h3>
+                            <p>
+                                Partnering with an international freight carrier operating 1,200 vessels and vehicles, Stackly built predictive route optimization models factoring dynamic port congestion, weather telemetry, and fuel pricing.
+                            </p>
+                            <div class="case-metrics-row">
+                                <div class="metric-stat">
+                                    <h4>22.4%</h4>
+                                    <p>Fuel Burn Reduction</p>
+                                </div>
+                                <div class="metric-stat">
+                                    <h4>$38M</h4>
+                                    <p>Direct Fleet Savings</p>
+                                </div>
+                                <div class="metric-stat">
+                                    <h4>14 Days</h4>
+                                    <p>Avg Delivery Speed Up</p>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="theme-btn">Request Supply Chain Deck <i class="fa-solid fa-file-lines ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 5: Client Spotlight Card
+         ========================================== -->
+    <section class="section-padding section-bg-2">
+        <div class="container">
+            <div class="client-spotlight-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <span class="text-warning text-uppercase fw-bold mb-2 d-inline-block" style="letter-spacing: 2px;">Verified Executive Endorsement</span>
+                        <h3>"The single highest-ROI advisory partnership our board has approved in a decade."</h3>
+                        <p>
+                            "Stackly didn't just deliver a theoretical presentation; they embedded a battle-tested execution team that worked shoulder-to-shoulder with our executives to transform our balance sheet and technology infrastructure."
+                        </p>
+                        <div class="d-flex align-items-center gap-3 mt-4">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Managing Director" style="width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--theme);">
+                            <div>
+                                <h6 class="mb-0 text-white fw-bold">Charlotte Beauchamp</h6>
+                                <small class="text-warning">Group Chief Strategy Officer, Nexus Global Infrastructure</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                        <div class="p-4 rounded-3 text-center" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);">
+                            <h2 class="text-warning fw-bold mb-1">100%</h2>
+                            <p class="text-white small mb-0">Contractual Milestone Delivery Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 6: Total Impact Telemetry Numbers
+         ========================================== -->
+    <section class="section-padding header-bg">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fa-solid fa-sterling-sign"></i></div>
+                        <div class="counter-number" data-count="4200">0</div>
+                        <p>Million Pounds Capital Optimized</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="counter-number" data-count="840">0</div>
+                        <p>Enterprise Portfolios Restructured</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="counter-number" data-count="45">0</div>
+                        <p>International Jurisdictions Advised</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="counter-box">
+                        <div class="counter-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="counter-number" data-count="99">0</div>
+                        <p>Audited Client Retention Rate (%)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 7: Industries Covered
+         ========================================== -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title text-center">
+                <span class="sub-title"><i class="fa-solid fa-industry"></i> Domain Depth</span>
+                <h2>Sectors We Transform</h2>
+                <p>Specialized domain intelligence across regulated and fast-evolving markets.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="tech-badge-card">
+                        <i class="fa-solid fa-landmark"></i>
+                        <h5>Banking & Capital Markets</h5>
+                        <p>Asset management, payments, core ledger replatforming.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="tech-badge-card">
+                        <i class="fa-solid fa-hospital"></i>
+                        <h5>Healthcare & MedTech</h5>
+                        <p>MHRA/FDA regulatory compliance, clinical telemetry.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="tech-badge-card">
+                        <i class="fa-solid fa-solar-panel"></i>
+                        <h5>Clean Tech & Energy</h5>
+                        <p>Renewables grid optimization, carbon scope auditing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="tech-badge-card">
+                        <i class="fa-solid fa-plane"></i>
+                        <h5>Aviation & Global Logistics</h5>
+                        <p>Fleet predictive routing, supply chain automation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Section 8: Call To Action Banner
+         ========================================== -->
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="cta-box-banner">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2>Have a High-Stakes Project Requiring Expert Execution?</h2>
+                        <p>Consult with our portfolio partners to analyze how our methodologies can accelerate your strategic goals.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                        <a href="contact.html" class="theme-btn">Schedule Case Review <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main Script JS -->
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
