@@ -1,5 +1,9 @@
 /* Page Background and Layout Shell */
-.auth-page-body {
+html {
+  overflow-x: hidden;
+}
+
+body.auth-page-body {
   min-height: 100vh;
   background-color: #0d131a;
   background-image:
@@ -13,10 +17,15 @@
   overflow-x: hidden;
 }
 
+/* Custom Scrollbar for Auth Dark Theme */
+::-webkit-scrollbar-track {
+  background: #0d131a;
+}
+
 /* Background Ambient Glows */
 .auth-page-body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   width: 600px;
   height: 600px;
   background: radial-gradient(
@@ -33,7 +42,7 @@
 
 .auth-page-body::after {
   content: "";
-  position: absolute;
+  position: fixed;
   width: 500px;
   height: 500px;
   background: radial-gradient(
@@ -52,7 +61,7 @@
 .auth-top-nav {
   position: relative;
   z-index: 10;
-  padding: 24px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(13, 19, 26, 0.6);
   backdrop-filter: blur(12px);
