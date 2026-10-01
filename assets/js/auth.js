@@ -296,19 +296,26 @@ document.addEventListener("DOMContentLoaded", () => {
     "loginPasswordFeedback",
   );
 
+  const loginStrengthContainer = document.getElementById(
+    "loginStrengthContainer",
+  );
+
   if (loginPasswordInput) {
     loginPasswordInput.addEventListener("input", function () {
+      const strength = evaluatePasswordStrength(this.value);
+      updateStrengthUI(loginStrengthContainer, strength);
+
       if (this.value.length === 0) {
         this.classList.remove("is-valid", "is-invalid");
         if (loginPasswordFeedback)
           loginPasswordFeedback.className = "field-feedback";
-      } else if (this.value.length < 6) {
+      } else if (strength.level === "weak") {
         this.classList.add("is-invalid");
         this.classList.remove("is-valid");
         if (loginPasswordFeedback) {
           loginPasswordFeedback.className = "field-feedback show-error";
           loginPasswordFeedback.innerHTML =
-            '<i class="fa-solid fa-triangle-exclamation"></i> Password must be at least 6 characters.';
+            '<i class="fa-solid fa-shield-halved"></i> Weak password. Please use at least 8 characters with letters, numbers, and symbols.';
         }
       } else {
         this.classList.remove("is-invalid");

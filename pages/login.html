@@ -268,6 +268,44 @@
                         ></div>
                       </div>
 
+                      <!-- Password Strength Live Indicator -->
+                      <div
+                        class="password-strength-container mb-3"
+                        id="loginStrengthContainer"
+                      >
+                        <div class="strength-meter-header">
+                          <span class="strength-label">Security Strength:</span>
+                          <span class="strength-badge">Strength</span>
+                        </div>
+                        <div class="strength-progress-bars">
+                          <div class="strength-segment"></div>
+                          <div class="strength-segment"></div>
+                          <div class="strength-segment"></div>
+                          <div class="strength-segment"></div>
+                        </div>
+                        <ul class="password-criteria-list">
+                          <li class="password-criteria-item" data-crit="length">
+                            <i class="fa-regular fa-circle"></i> Minimum 8
+                            characters
+                          </li>
+                          <li class="password-criteria-item" data-crit="cases">
+                            <i class="fa-regular fa-circle"></i> Upper &
+                            Lowercase letters
+                          </li>
+                          <li class="password-criteria-item" data-crit="number">
+                            <i class="fa-regular fa-circle"></i> At least 1
+                            number
+                          </li>
+                          <li
+                            class="password-criteria-item"
+                            data-crit="special"
+                          >
+                            <i class="fa-regular fa-circle"></i> At least 1
+                            symbol (@#$%)
+                          </li>
+                        </ul>
+                      </div>
+
                       <!-- Field 4: Remember Me Checkbox (Requirements 2 & 4) -->
                       <div class="auth-checkbox-group">
                         <input
