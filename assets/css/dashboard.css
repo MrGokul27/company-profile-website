@@ -131,9 +131,20 @@ body.dashboard-body {
 .sidebar-user-avatar {
   width: 44px;
   height: 44px;
+  min-width: 44px;
   border-radius: 10px;
-  object-fit: cover;
   border: 2px solid var(--dash-gold);
+  background: linear-gradient(135deg, var(--dash-gold) 0%, #9e8260 100%);
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  user-select: none;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(182, 153, 116, 0.25);
 }
 
 .sidebar-user-info {
@@ -502,11 +513,22 @@ body.dashboard-body {
 }
 
 .topbar-avatar {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
   border-radius: 50%;
-  object-fit: cover;
   border: 1.5px solid var(--dash-gold);
+  background: linear-gradient(135deg, var(--dash-gold) 0%, #9e8260 100%);
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  user-select: none;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(182, 153, 116, 0.2);
 }
 
 .topbar-user-name {

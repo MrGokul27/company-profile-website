@@ -69,11 +69,9 @@
 
         <!-- Authenticated User Profile Mini Card -->
         <div class="sidebar-user-card">
-          <img
-            src="../assets/images/home/home-team-avatar-1.webp"
-            alt="User Avatar"
-            class="sidebar-user-avatar dyn-user-avatar"
-          />
+          <div class="sidebar-user-avatar dyn-user-avatar dyn-user-initial">
+            V
+          </div>
           <div class="sidebar-user-info">
             <h6 class="user-name dyn-user-name">Victoria Stirling</h6>
             <span class="user-role-badge dyn-user-role">Client Partner</span>
@@ -364,7 +362,7 @@
 
           <div class="topbar-right">
             <!-- Quick Role Switcher Pill Bar (Requirements 2 & 5) -->
-            <div class="role-pill-selector d-none d-xl-flex">
+            <!-- <div class="role-pill-selector d-none d-xl-flex">
               <button
                 type="button"
                 class="role-pill-btn active"
@@ -389,77 +387,14 @@
               >
                 <i class="fa-solid fa-landmark"></i> Stakeholder
               </button>
-            </div>
+            </div> -->
 
             <!-- Notifications Dropdown -->
             <div class="dropdown">
-              <button
-                class="topbar-icon-btn"
-                type="button"
-                id="notifDropdown"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <button class="topbar-icon-btn" type="button">
                 <i class="fa-regular fa-bell"></i>
                 <span class="topbar-badge-dot"></span>
               </button>
-              <ul
-                class="dropdown-menu dropdown-menu-end p-3 shadow-lg border-0"
-                style="width: 320px; border-radius: 12px"
-                aria-labelledby="notifDropdown"
-              >
-                <li
-                  class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom"
-                >
-                  <span class="fw-bold" style="font-size: 0.9rem"
-                    >Advisory Briefings</span
-                  >
-                  <span
-                    class="badge bg-warning text-dark"
-                    style="font-size: 0.72rem"
-                    >3 New</span
-                  >
-                </li>
-                <li class="py-2 border-bottom">
-                  <div class="d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-circle-check text-success mt-1"></i>
-                    <div>
-                      <p class="mb-0 fw-semibold" style="font-size: 0.82rem">
-                        M&A Valuation Model Approved
-                      </p>
-                      <small class="text-muted" style="font-size: 0.72rem"
-                        >12 minutes ago</small
-                      >
-                    </div>
-                  </div>
-                </li>
-                <li class="py-2 border-bottom">
-                  <div class="d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-shield-virus text-warning mt-1"></i>
-                    <div>
-                      <p class="mb-0 fw-semibold" style="font-size: 0.82rem">
-                        ESG Compliance Report Ready
-                      </p>
-                      <small class="text-muted" style="font-size: 0.72rem"
-                        >2 hours ago</small
-                      >
-                    </div>
-                  </div>
-                </li>
-                <li class="py-2">
-                  <div class="d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-calendar-days text-info mt-1"></i>
-                    <div>
-                      <p class="mb-0 fw-semibold" style="font-size: 0.82rem">
-                        Executive Strategy Session at 4 PM
-                      </p>
-                      <small class="text-muted" style="font-size: 0.72rem"
-                        >Today</small
-                      >
-                    </div>
-                  </div>
-                </li>
-              </ul>
             </div>
 
             <!-- User Menu Dropdown -->
@@ -471,11 +406,9 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <img
-                  src="../assets/images/home/home-team-avatar-1.webp"
-                  alt="User Avatar"
-                  class="topbar-avatar dyn-user-avatar"
-                />
+                <div class="topbar-avatar dyn-user-avatar dyn-user-initial">
+                  V
+                </div>
                 <span class="topbar-user-name dyn-user-name"
                   >Victoria Stirling</span
                 >

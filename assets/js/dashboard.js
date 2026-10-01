@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
       defaultName: "Victoria Stirling",
       title: "Managing Director, Apex Capital",
       roleLabel: "Client / Corporate Partner",
-      avatar: "../assets/images/home/home-team-avatar-1.webp",
       badgeClass: "badge-blue",
       defaultPane: "client-overview",
     },
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       defaultName: "Marcus Vance",
       title: "Senior Strategy Director",
       roleLabel: "Senior Consultant / Advisor",
-      avatar: "../assets/images/home/home-team-avatar-2.webp",
       badgeClass: "badge-teal",
       defaultPane: "consultant-cockpit",
     },
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
       defaultName: "Helena Rossi",
       title: "Chief Executive Officer & Partner",
       roleLabel: "Enterprise Executive / C-Suite",
-      avatar: "../assets/images/home/home-team-avatar-3.webp",
       badgeClass: "badge-gold",
       defaultPane: "executive-overview",
     },
@@ -41,14 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
       defaultName: "Lord Arthur Sterling",
       title: "Principal Board Trustee & Shareholder",
       roleLabel: "Board Member / Stakeholder",
-      avatar: "../assets/images/home/home-team-avatar-4.webp",
       badgeClass: "badge-purple",
       defaultPane: "stakeholder-governance",
     },
   };
 
   // -------------------------------------------------------------
-  // 2. Session Initialization (Requirements 2, 3, 4)
+  // 2. Session Initialization
   // Read data saved during login or URL params
   // -------------------------------------------------------------
   function getSessionUser() {
@@ -126,11 +122,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginTimeElements = document.querySelectorAll(".dyn-login-time");
     loginTimeElements.forEach((el) => (el.textContent = currentUser.loginTime));
 
-    // 2. Update user avatars
-    const avatarElements = document.querySelectorAll(".dyn-user-avatar");
+    // 2. Update user avatars (first letter of name only)
+    const initial =
+      currentUser.name && currentUser.name.trim().length > 0
+        ? currentUser.name.trim().charAt(0).toUpperCase()
+        : "U";
+    const avatarElements = document.querySelectorAll(
+      ".dyn-user-avatar, .dyn-user-initial",
+    );
     avatarElements.forEach((el) => {
-      el.src = currentUser.roleConfig.avatar;
-      el.alt = currentUser.name;
+      el.textContent = initial;
     });
 
     // 3. Update top role pills active state
@@ -182,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // -------------------------------------------------------------
-  // 4. Tab Pane Navigation within a Role (Requirement 5)
+  // 4. Tab Pane Navigation within a Role
   // -------------------------------------------------------------
   function activateTabPane(roleKey, targetPaneId, activeLinkElement) {
     const roleSection = document.querySelector(
@@ -250,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // -------------------------------------------------------------
-  // 6. Mobile Sidebar Offcanvas Handlers (Requirement 6)
+  // 6. Mobile Sidebar Offcanvas Handlers
   // -------------------------------------------------------------
   const sidebar = document.getElementById("dashboardSidebar");
   const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
@@ -277,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebarOverlay.addEventListener("click", closeMobileSidebar);
 
   // -------------------------------------------------------------
-  // 7. Logout Action Handler (Requirements 3 & 7)
+  // 7. Logout Action Handler
   // Logout button must redirect cleanly to login page
   // -------------------------------------------------------------
   document.querySelectorAll(".logout-action-btn, #logoutBtn").forEach((btn) => {
@@ -301,38 +302,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // -------------------------------------------------------------
-  // 8. Global Interceptor for Empty Links & Buttons -> 404 (Requirement 7)
-  // "Dashboard all the empty links, # and buttons click and redirect to 404 page,
-  // just add a script for that. The sidebar menu or logout button should not redirect to 404 page."
+  // 8. Global Interceptor for Empty Links & Buttons -> 404 Direct Redirection
+  // Except sidebar menus and logout button, all buttons, empty links, #,
+  // and form submissions directly redirect to 404 page with no alert dialog.
   // -------------------------------------------------------------
   document.addEventListener("click", (e) => {
     // 1. Check if clicked an anchor link
     const link = e.target.closest("a");
     if (link) {
-      // Excluded elements that should never trigger 404
+      // Excluded elements that should never trigger 404:
+      // - Sidebar menu links
+      // - Sidebar brand logo
+      // - Logout action links
+      // - Role dropdown items
       if (
         link.classList.contains("sidebar-nav-link") ||
-        link.classList.contains("sidebar-footer-btn") ||
+        link.classList.contains("sidebar-logo") ||
         link.classList.contains("logout-action-btn") ||
         link.classList.contains("role-dropdown-item") ||
         link.id === "logoutBtn" ||
         link.hasAttribute("data-pane") ||
-        link.hasAttribute("data-role") ||
-        link.hasAttribute("data-bs-toggle") ||
-        link.hasAttribute("data-bs-target") ||
-        link.hasAttribute("data-bs-dismiss")
+        link.hasAttribute("data-role")
       ) {
         return;
       }
 
       const href = link.getAttribute("href");
+      // If href is empty, #, javascript, or any placeholder link, redirect directly to 404
       if (
         href === null ||
         href.trim() === "" ||
         href.trim() === "#" ||
         href.trim() === "#!" ||
-        href.trim() === "javascript:void(0)" ||
-        href.trim() === "javascript:;"
+        href.trim().startsWith("javascript:") ||
+        link.classList.contains("tbl-btn")
       ) {
         e.preventDefault();
         window.location.href = "../404.html";
@@ -340,38 +343,38 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // 2. Check if clicked an unhandled placeholder button
+    // 2. Check if clicked a button
     const btn = e.target.closest("button");
     if (btn) {
-      // Excluded functional buttons
+      // Excluded functional dashboard controls:
+      // - Logout button
+      // - Sidebar navigation / toggles
+      // - Role switcher pills
       if (
+        btn.classList.contains("logout-action-btn") ||
+        btn.id === "logoutBtn" ||
+        btn.classList.contains("sidebar-nav-link") ||
         btn.classList.contains("role-pill-btn") ||
         btn.classList.contains("dashboard-toggle-sidebar") ||
         btn.classList.contains("sidebar-close-btn") ||
-        btn.classList.contains("logout-action-btn") ||
-        btn.classList.contains("btn-close") ||
         btn.id === "sidebarToggleBtn" ||
-        btn.id === "sidebarCloseBtn" ||
-        btn.id === "logoutBtn" ||
-        btn.hasAttribute("data-bs-toggle") ||
-        btn.hasAttribute("data-bs-target") ||
-        btn.hasAttribute("data-bs-dismiss") ||
-        btn.closest("form") ||
-        btn.hasAttribute("data-action")
+        btn.id === "sidebarCloseBtn"
       ) {
         return;
       }
 
-      // If button has placeholder class or no handler attached
-      if (
-        btn.classList.contains("placeholder-btn") ||
-        btn.getAttribute("data-mock-404") === "true"
-      ) {
-        e.preventDefault();
-        window.location.href = "../404.html";
-        return;
-      }
+      // All remaining buttons redirect directly to 404 page (no alert)
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = "../404.html";
+      return;
     }
+  });
+
+  // Intercept any form submission on dashboard to redirect to 404 page directly
+  document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    window.location.href = "../404.html";
   });
 
   // -------------------------------------------------------------
@@ -433,11 +436,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // 11. Initial execution on page load
   // -------------------------------------------------------------
   updateDashboardRoleUI(currentUser.roleKey);
-
-  // Greet user on first arrival
-  showDashboardToast(
-    `Welcome, ${currentUser.name}`,
-    `Authenticated as ${currentUser.roleConfig.roleLabel}. Session secure.`,
-    "success",
-  );
 });
