@@ -1,180 +1,593 @@
-/* ==========================================================================
-   Company Profile Website - Team Page Stylesheet
-   ========================================================================== */
-
-/* Executive Leadership Full Bios */
+/* ==========================================
+   Section 2: Executive Leadership Full Bios
+   ========================================== */
 .leader-featured-card {
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    margin-bottom: 30px;
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    border-color 0.3s ease;
+  margin-bottom: 36px;
+  position: relative;
 }
 
 .leader-featured-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--box-shadow-hover);
-    border-color: var(--theme);
+  transform: translateY(-8px);
+  box-shadow:
+    0 25px 50px -10px rgba(7, 32, 50, 0.14),
+    0 0 0 1px var(--theme);
+  border-color: var(--theme);
 }
 
 .leader-photo {
-    height: 100%;
-    min-height: 360px;
-    overflow: hidden;
+  position: relative;
+  height: 100%;
+  min-height: 440px;
+  overflow: hidden;
+  background: var(--header2);
 }
 
 .leader-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition:
+    transform 0.65s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 0.4s ease;
 }
 
+.leader-featured-card:hover .leader-photo img {
+  transform: scale(1.06);
+}
+
+.leader-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 32, 50, 0.05) 0%,
+    rgba(7, 32, 50, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Light Sheen Sweep Effect on Hover */
+.leader-photo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.85s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.leader-featured-card:hover .leader-photo::after {
+  left: 140%;
+}
+
+.leader-photo-badge {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 3;
+  background: rgba(7, 32, 50, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(182, 153, 116, 0.4);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+.leader-photo-badge i {
+  color: var(--theme);
+}
+
+.leader-featured-card:hover .leader-photo-badge {
+  border-color: var(--theme);
+  transform: translateY(-2px);
+  background: var(--header2);
+}
+
+.leader-photo-stat {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.leader-featured-card:hover .leader-photo-stat {
+  background: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  border-color: var(--theme);
+}
+
+.leader-photo-stat .stat-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--header2);
+  line-height: 1;
+}
+
+.leader-photo-stat .stat-lbl {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Leader Details Section */
 .leader-details {
-    padding: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  padding: 40px 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.leader-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .leader-designation {
-    color: var(--theme);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+  color: var(--theme);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.leader-tenure-badge {
+  background: var(--bg2);
+  color: var(--text-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.leader-featured-card:hover .leader-tenure-badge {
+  background: var(--theme-light);
+  color: var(--header2);
+  border-color: var(--theme);
 }
 
 .leader-details h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--header2);
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.leader-featured-card:hover .leader-details h3 {
+  color: var(--header2);
+}
+
+.leader-sub-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--theme-hover);
+  margin-bottom: 16px;
 }
 
 .leader-details p {
-    font-size: 0.95rem;
-    color: var(--text);
-    line-height: 1.7;
-    margin-bottom: 20px;
+  font-size: 0.94rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* 3-Column Highlights Metrics */
+.leader-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.leader-stat-item {
+  background: var(--bg2);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.leader-stat-item:hover,
+.leader-featured-card:hover .leader-stat-item {
+  background: var(--white);
+  border-color: rgba(182, 153, 116, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.leader-stat-item:hover {
+  border-color: var(--theme) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(182, 153, 116, 0.18) !important;
+}
+
+.leader-stat-item h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--header2);
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+
+.leader-stat-item p {
+  font-size: 0.72rem;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
 }
 
 .leader-expertise-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .leader-expertise-tags span {
-    background: var(--bg2);
-    border: 1px solid var(--border-light);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--header);
+  background: var(--bg2);
+  border: 1px solid var(--border-light);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--header);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.leader-expertise-tags span i {
+  font-size: 0.7rem;
+  color: var(--theme);
+  transition: color 0.3s ease;
+}
+
+.leader-expertise-tags span:hover {
+  background: var(--header2);
+  color: var(--white);
+  border-color: var(--header2);
+  transform: translateY(-2px);
+}
+
+.leader-expertise-tags span:hover i {
+  color: var(--theme);
+}
+
+.leader-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-light);
+}
+
+.leader-cta-btn {
+  background: var(--header2);
+  color: var(--white);
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leader-cta-btn:hover {
+  background: var(--theme);
+  color: var(--white);
+  transform: translateX(3px);
+  box-shadow: 0 6px 18px rgba(182, 153, 116, 0.35);
 }
 
 .leader-social-row {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 8px;
 }
 
 .leader-social-row a {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--bg2);
-    color: var(--header);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    transition: var(--transition);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg2);
+  color: var(--header2);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: var(--transition);
 }
 
 .leader-social-row a:hover {
-    background: var(--theme);
-    color: var(--white);
-    transform: translateY(-2px);
+  background: var(--theme);
+  color: var(--white);
+  border-color: var(--theme);
+  transform: translateY(-3px) scale(1.08);
 }
 
-/* Advisory Board Card */
+/* ==========================================
+   Section 4: Advisory Board Card
+   ========================================== */
 .advisor-card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 30px 24px;
-    text-align: center;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px 24px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
 }
 
 .advisor-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--theme);
-    box-shadow: var(--box-shadow-hover);
+  transform: translateY(-6px);
+  border-color: var(--theme);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .advisor-avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin: 0 auto 18px;
-    object-fit: cover;
-    border: 3px solid var(--theme);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  object-fit: cover;
+  border: 3px solid var(--theme);
 }
 
 .advisor-card h4 {
-    font-size: 1.15rem;
-    margin-bottom: 4px;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
 }
 
 .advisor-card span {
-    color: var(--theme);
-    font-size: 0.82rem;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 12px;
+  color: var(--theme);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .advisor-card p {
-    font-size: 0.88rem;
-    color: var(--text);
-    margin: 0;
+  font-size: 0.88rem;
+  color: var(--text);
+  margin: 0;
 }
 
-/* Culture & Work Environment */
+/* ==========================================
+   Section 5: Culture & Work Environment
+   ========================================== */
 .culture-pillar {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 32px 25px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 25px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
 }
 
 .culture-pillar:hover {
-    border-color: var(--theme);
-    transform: translateY(-5px);
+  border-color: var(--theme);
+  transform: translateY(-5px);
 }
 
 .culture-pillar i {
-    font-size: 2rem;
-    color: var(--theme);
-    margin-bottom: 16px;
+  font-size: 2rem;
+  color: var(--theme);
+  margin-bottom: 16px;
 }
 
 .culture-pillar h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .culture-pillar p {
-    font-size: 0.9rem;
-    color: var(--text);
-    margin: 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ==========================================
+   Section 6: Talent Telemetry & Demographics
+   ========================================== */
+.talent-telemetry-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.telemetry-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 38px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  transition:
+    transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.telemetry-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--theme);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(182, 153, 116, 0.25);
+}
+
+.telemetry-card .counter-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(182, 153, 116, 0.12);
+  border: 1px solid rgba(182, 153, 116, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--theme);
+  margin: 0 auto 20px;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.telemetry-card:hover .counter-icon {
+  background: var(--theme);
+  color: var(--white);
+  transform: scale(1.12) rotate(6deg);
+  box-shadow: 0 8px 20px rgba(182, 153, 116, 0.4);
+  border-color: var(--theme);
+}
+
+.telemetry-card .counter-number {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.telemetry-card .counter-label-wrap {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.telemetry-card .counter-label-wrap p,
+.telemetry-card p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0;
+  text-align: center;
+}
+
+/* ==========================================
+   Responsive Breakpoints
+   ========================================== */
+@media (max-width: 991px) {
+  .leader-featured-card .row {
+    flex-direction: column !important;
+  }
+  .leader-photo {
+    min-height: 340px;
+    max-height: 420px;
+  }
+  .leader-details {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  .leader-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .leader-details h3 {
+    font-size: 1.45rem;
+  }
+  .leader-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .leader-cta-btn {
+    justify-content: center;
+  }
+  .leader-social-row {
+    justify-content: center;
+  }
+  .telemetry-card {
+    padding: 28px 18px;
+  }
+  .telemetry-card .counter-number {
+    font-size: 2.3rem;
+  }
 }

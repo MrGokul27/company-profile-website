@@ -1378,36 +1378,48 @@ img {
 /* 7. Counter Section */
 .counter-box {
   text-align: center;
-  padding: 30px 20px;
+  padding: 35px 24px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .counter-box:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--theme);
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 .counter-box .counter-icon {
   font-size: 2.2rem;
   color: var(--theme);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  transition: var(--transition);
+}
+
+.counter-box:hover .counter-icon {
+  transform: scale(1.1);
 }
 
 .counter-box .counter-number {
   font-size: 2.8rem;
   font-weight: 800;
   color: var(--white);
-  line-height: 1;
-  margin-bottom: 8px;
+  line-height: 1.1;
+  margin-bottom: 10px;
 }
 
 .counter-box p {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
+  line-height: 1.5;
   margin: 0;
 }
 

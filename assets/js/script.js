@@ -163,15 +163,17 @@ function initCounters() {
         if (entry.isIntersecting) {
           const counter = entry.target;
           const target = +counter.getAttribute("data-count");
+          const suffix = counter.getAttribute("data-suffix") || "";
+          const prefix = counter.getAttribute("data-prefix") || "";
           let count = 0;
 
           const updateCount = () => {
-            const increment = Math.ceil(target / 60);
+            const increment = Math.ceil(target / 60) || 1;
             count += increment;
             if (count >= target) {
-              counter.innerText = target.toLocaleString();
+              counter.innerText = prefix + target.toLocaleString() + suffix;
             } else {
-              counter.innerText = count.toLocaleString();
+              counter.innerText = prefix + count.toLocaleString() + suffix;
               setTimeout(updateCount, 30);
             }
           };
@@ -181,7 +183,7 @@ function initCounters() {
         }
       });
     },
-    { threshold: 0.5 },
+    { threshold: 0.3 },
   );
 
   counters.forEach((counter) => counterObserver.observe(counter));
