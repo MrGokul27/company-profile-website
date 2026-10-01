@@ -1,189 +1,402 @@
-/* ==========================================================================
-   Company Profile Website - Services Page Stylesheet
-   ========================================================================== */
+/* Section 2: Services Overview Introduction */
+.services-intro-section {
+  position: relative;
+}
+
+.services-stats-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.services-stat-item {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 22px 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: default;
+}
+
+.services-stat-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--theme);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: var(--transition);
+}
+
+.services-stat-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-hover);
+  border-color: rgba(182, 153, 116, 0.4);
+}
+
+.services-stat-item:hover::before {
+  transform: scaleX(1);
+}
+
+.services-stat-item .stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--theme-light);
+  color: var(--theme);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.services-stat-item:hover .stat-icon {
+  background: var(--theme);
+  color: var(--white);
+  transform: scale(1.12) rotate(6deg);
+  box-shadow: 0 6px 16px var(--theme-glow);
+}
+
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--header);
+  margin-bottom: 4px;
+  line-height: 1.1;
+  transition: var(--transition);
+}
+
+.services-stat-item:hover .stat-value {
+  color: var(--theme);
+}
+
+.stat-caption {
+  font-size: 0.82rem;
+  color: var(--text);
+  font-weight: 600;
+  display: block;
+  line-height: 1.3;
+}
+
+.services-intro-image-wrap {
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.services-image-frame {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.services-image-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 2px solid transparent;
+  transition: var(--transition);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.services-intro-image-wrap:hover .services-image-frame {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+}
+
+.services-intro-image-wrap:hover .services-image-frame::before {
+  border-color: var(--theme);
+}
+
+.services-intro-img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.services-intro-image-wrap:hover .services-intro-img {
+  transform: scale(1.06);
+}
+
+.services-image-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.85s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.services-intro-image-wrap:hover .services-image-shine {
+  left: 150%;
+}
+
+.services-feature-pill {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  background: var(--header);
+  color: var(--white);
+  padding: 14px 22px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--theme);
+  transition: var(--transition);
+  z-index: 3;
+}
+
+.services-feature-pill:hover,
+.services-intro-image-wrap:hover .services-feature-pill {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px var(--theme-glow);
+  border-color: var(--white);
+}
+
+.services-feature-pill .pill-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--theme);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.services-intro-image-wrap:hover .pill-icon {
+  transform: rotate(10deg) scale(1.08);
+}
+
+.pill-text strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.pill-text span {
+  font-size: 0.8rem;
+  color: var(--border);
+  font-weight: 500;
+}
+
+@media (max-width: 576px) {
+  .services-stats-grid {
+    flex-direction: column;
+  }
+}
 
 /* Service Pillar Deep Dive Cards */
 .pillar-card {
-    background: var(--white);
-    border-radius: 18px;
-    padding: 35px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 35px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
 }
 
 .pillar-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--box-shadow-hover);
-    border-color: var(--theme);
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--theme);
 }
 
 .pillar-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
 }
 
 .pillar-icon {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
-    border-radius: 14px;
-    background: var(--theme-light);
-    color: var(--theme);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    transition: var(--transition);
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 14px;
+  background: var(--theme-light);
+  color: var(--theme);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: var(--transition);
 }
 
 .pillar-card:hover .pillar-icon {
-    background: var(--theme);
-    color: var(--white);
+  background: var(--theme);
+  color: var(--white);
 }
 
 .pillar-header h3 {
-    font-size: 1.35rem;
-    margin: 0;
+  font-size: 1.35rem;
+  margin: 0;
 }
 
 .pillar-deliverables {
-    margin: 20px 0;
-    padding-left: 0;
+  margin: 20px 0;
+  padding-left: 0;
 }
 
 .pillar-deliverables li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.92rem;
-    color: var(--header);
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--header);
+  margin-bottom: 10px;
 }
 
 .pillar-deliverables li i {
-    color: var(--theme);
-    font-size: 0.85rem;
+  color: var(--theme);
+  font-size: 0.85rem;
 }
 
 /* Service Comparison Matrix Table */
 .comparison-table-wrapper {
-    background: var(--white);
-    border-radius: 18px;
-    overflow-x: auto;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
+  background: var(--white);
+  border-radius: 18px;
+  overflow-x: auto;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
 }
 
 .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 680px;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
 }
 
 .comparison-table th {
-    background: var(--header);
-    color: var(--white);
-    padding: 20px 24px;
-    font-size: 1rem;
-    text-align: left;
-    font-weight: 700;
+  background: var(--header);
+  color: var(--white);
+  padding: 20px 24px;
+  font-size: 1rem;
+  text-align: left;
+  font-weight: 700;
 }
 
 .comparison-table th:first-child {
-    width: 40%;
+  width: 40%;
 }
 
 .comparison-table td {
-    padding: 18px 24px;
-    border-bottom: 1px solid var(--border-light);
-    color: var(--header);
-    font-size: 0.95rem;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--header);
+  font-size: 0.95rem;
 }
 
 .comparison-table tr:hover td {
-    background-color: var(--bg2);
+  background-color: var(--bg2);
 }
 
 .comparison-table td i.fa-check-circle {
-    color: #28a745;
-    font-size: 1.15rem;
+  color: #28a745;
+  font-size: 1.15rem;
 }
 
 .comparison-table td i.fa-times-circle {
-    color: #dc3545;
-    font-size: 1.15rem;
+  color: #dc3545;
+  font-size: 1.15rem;
 }
 
 /* Tech Stacks & Methodologies */
 .tech-badge-card {
-    background: var(--white);
-    border-radius: 14px;
-    padding: 24px 20px;
-    text-align: center;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
 }
 
 .tech-badge-card:hover {
-    border-color: var(--theme);
-    transform: translateY(-5px);
+  border-color: var(--theme);
+  transform: translateY(-5px);
 }
 
 .tech-badge-card i {
-    font-size: 2.2rem;
-    color: var(--theme);
-    margin-bottom: 12px;
+  font-size: 2.2rem;
+  color: var(--theme);
+  margin-bottom: 12px;
 }
 
 .tech-badge-card h5 {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
 }
 
 .tech-badge-card p {
-    font-size: 0.85rem;
-    color: var(--text);
-    margin: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  margin: 0;
 }
 
 /* SLA Guarantee Cards */
 .sla-card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 30px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  height: 100%;
 }
 
 .sla-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--theme);
-    box-shadow: var(--box-shadow-hover);
+  transform: translateY(-6px);
+  border-color: var(--theme);
+  box-shadow: var(--box-shadow-hover);
 }
 
 .sla-card .sla-metric {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--theme);
-    line-height: 1;
-    margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--theme);
+  line-height: 1;
+  margin-bottom: 10px;
 }
 
 .sla-card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .sla-card p {
-    font-size: 0.92rem;
-    color: var(--text);
-    margin: 0;
+  font-size: 0.92rem;
+  color: var(--text);
+  margin: 0;
 }
