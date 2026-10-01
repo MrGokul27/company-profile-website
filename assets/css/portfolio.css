@@ -560,7 +560,6 @@
   color: var(--text);
   line-height: 1.6;
   margin-bottom: 20px;
-  flex-grow: 1;
 }
 
 .industry-tags {
@@ -590,6 +589,7 @@
 .industry-card-footer {
   padding-top: 14px;
   border-top: 1px solid var(--border-light);
+  margin-top: auto;
 }
 
 .industry-link {
