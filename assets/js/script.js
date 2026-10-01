@@ -456,6 +456,20 @@ function init404Page() {
         ],
       },
       {
+        name: "Enterprise Corporate Dashboard",
+        url: prefix + "dashboard.html",
+        tags: [
+          "dashboard",
+          "portal",
+          "analytics",
+          "client",
+          "consultant",
+          "executive",
+          "stakeholder",
+          "kpis",
+        ],
+      },
+      {
         name: "Client Portal Login",
         url: prefix + "login.html",
         tags: ["login", "portal", "signin", "auth", "client"],

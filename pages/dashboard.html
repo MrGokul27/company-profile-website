@@ -1,0 +1,3059 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise Corporate Dashboard - Stackly Advisory Portal</title>
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Theme Base, Auth, and Dedicated Dashboard CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body class="dashboard-body">
+    <!-- Offcanvas Overlay for Mobile Sidebar (Requirement 6) -->
+    <div class="dashboard-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="dashboard-wrapper">
+      <!-- =================================================================
+           SIDEBAR NAVIGATION (Role-Based Dynamic Menus)
+           ================================================================= -->
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <!-- Sidebar Brand Header -->
+        <div class="sidebar-header">
+          <a
+            href="../index.html"
+            class="sidebar-logo"
+            title="Stackly Advisory Home"
+          >
+            <img
+              src="../assets/images/logoStackly.webp"
+              alt="Stackly Corporate Logo"
+            />
+          </a>
+          <button
+            class="sidebar-close-btn d-lg-none"
+            id="sidebarCloseBtn"
+            aria-label="Close Sidebar"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Authenticated User Profile Mini Card -->
+        <div class="sidebar-user-card">
+          <img
+            src="../assets/images/home/home-team-avatar-1.webp"
+            alt="User Avatar"
+            class="sidebar-user-avatar dyn-user-avatar"
+          />
+          <div class="sidebar-user-info">
+            <h6 class="user-name dyn-user-name">Victoria Stirling</h6>
+            <span class="user-role-badge dyn-user-role">Client Partner</span>
+          </div>
+        </div>
+
+        <!-- ==================== ROLE 1: CLIENT SIDEBAR MENU ==================== -->
+        <div class="role-sidebar-group" data-role="client">
+          <div class="sidebar-section-title">Client Advisory Desk</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link active" data-pane="client-overview">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  <span>Strategy & Overview</span>
+                </span>
+                <span class="sidebar-badge badge-gold">Active</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="client-projects">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-briefcase"></i>
+                  <span>Active Engagements</span>
+                </span>
+                <span class="sidebar-badge">4</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="client-deliverables">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-file-shield"></i>
+                  <span>Deliverables & Vault</span>
+                </span>
+                <span class="sidebar-badge">New</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="client-billing">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-receipt"></i>
+                  <span>Billing & Statements</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="client-consultation">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <span>Schedule Consultation</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="client-feedback">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                  <span>SLA & Feedback</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ==================== ROLE 2: CONSULTANT SIDEBAR MENU ==================== -->
+        <div
+          class="role-sidebar-group"
+          data-role="consultant"
+          style="display: none"
+        >
+          <div class="sidebar-section-title">Consultant Cockpit</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="consultant-cockpit">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  <span>Advisory Cockpit</span>
+                </span>
+                <span class="sidebar-badge badge-gold">Live</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="consultant-clients">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-building-user"></i>
+                  <span>Client Portfolios</span>
+                </span>
+                <span class="sidebar-badge">8</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="consultant-deliverables">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-list-check"></i>
+                  <span>Deliverables Pipeline</span>
+                </span>
+                <span class="sidebar-badge">6 Due</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="consultant-timesheet">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  <span>Timesheet & Billing</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="consultant-frameworks">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-book-bookmark"></i>
+                  <span>Advisory Frameworks</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="consultant-meetings">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-handshake"></i>
+                  <span>Client Sessions</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ==================== ROLE 3: EXECUTIVE SIDEBAR MENU ==================== -->
+        <div
+          class="role-sidebar-group"
+          data-role="executive"
+          style="display: none"
+        >
+          <div class="sidebar-section-title">C-Suite Command</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="executive-overview">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span>Command Center</span>
+                </span>
+                <span class="sidebar-badge badge-gold">KPIs</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="executive-practices">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-sitemap"></i>
+                  <span>Global Practices</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="executive-pipeline">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-hand-holding-dollar"></i>
+                  <span>M&A & Deal Pipeline</span>
+                </span>
+                <span class="sidebar-badge">$4.2B</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="executive-financials">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-coins"></i>
+                  <span>P&L & Financial Health</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="executive-roadmap">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-compass-drafting"></i>
+                  <span>Strategy 2026-2030</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="executive-board">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-landmark"></i>
+                  <span>Board Memorandums</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ==================== ROLE 4: STAKEHOLDER SIDEBAR MENU ==================== -->
+        <div
+          class="role-sidebar-group"
+          data-role="stakeholder"
+          style="display: none"
+        >
+          <div class="sidebar-section-title">Stakeholder Governance</div>
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="stakeholder-governance">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-scale-balanced"></i>
+                  <span>Governance & Oversight</span>
+                </span>
+                <span class="sidebar-badge badge-gold">Verified</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="stakeholder-equity">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-chart-bar"></i>
+                  <span>Equity & Dividends</span>
+                </span>
+                <span class="sidebar-badge">+14.2%</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="stakeholder-audits">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                  <span>Strategic Audits</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="stakeholder-esg">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-seedling"></i>
+                  <span>ESG & Risk Matrix</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="stakeholder-investors">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-newspaper"></i>
+                  <span>Market Disclosures</span>
+                </span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a class="sidebar-nav-link" data-pane="stakeholder-agm">
+                <span class="sidebar-nav-link-content">
+                  <i class="fa-solid fa-check-to-slot"></i>
+                  <span>AGM Voting Portal</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sidebar Footer Controls -->
+        <!-- <div class="sidebar-footer">
+          <div class="sidebar-footer-links">
+            <button
+              type="button"
+              class="sidebar-footer-btn logout-btn logout-action-btn"
+              id="logoutBtn"
+            >
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Sign Out Session</span>
+            </button>
+          </div>
+        </div> -->
+      </aside>
+
+      <!-- =================================================================
+           MAIN DASHBOARD CONTAINER
+           ================================================================= -->
+      <main class="dashboard-main">
+        <!-- Dashboard Top Navigation Bar -->
+        <header class="dashboard-topbar">
+          <div class="topbar-left">
+            <button
+              class="dashboard-toggle-sidebar d-lg-none"
+              id="sidebarToggleBtn"
+              aria-label="Toggle Navigation"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="topbar-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                class="topbar-search-input"
+                id="globalSearchInput"
+                placeholder="Search metrics, reports, clients, deliverables..."
+              />
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <!-- Quick Role Switcher Pill Bar (Requirements 2 & 5) -->
+            <div class="role-pill-selector d-none d-xl-flex">
+              <button
+                type="button"
+                class="role-pill-btn active"
+                data-role="client"
+              >
+                <i class="fa-solid fa-user"></i> Client
+              </button>
+              <button
+                type="button"
+                class="role-pill-btn"
+                data-role="consultant"
+              >
+                <i class="fa-solid fa-user-tie"></i> Consultant
+              </button>
+              <button type="button" class="role-pill-btn" data-role="executive">
+                <i class="fa-solid fa-crown"></i> Executive
+              </button>
+              <button
+                type="button"
+                class="role-pill-btn"
+                data-role="stakeholder"
+              >
+                <i class="fa-solid fa-landmark"></i> Stakeholder
+              </button>
+            </div>
+
+            <!-- Notifications Dropdown -->
+            <div class="dropdown">
+              <button
+                class="topbar-icon-btn"
+                type="button"
+                id="notifDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span class="topbar-badge-dot"></span>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end p-3 shadow-lg border-0"
+                style="width: 320px; border-radius: 12px"
+                aria-labelledby="notifDropdown"
+              >
+                <li
+                  class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom"
+                >
+                  <span class="fw-bold" style="font-size: 0.9rem"
+                    >Advisory Briefings</span
+                  >
+                  <span
+                    class="badge bg-warning text-dark"
+                    style="font-size: 0.72rem"
+                    >3 New</span
+                  >
+                </li>
+                <li class="py-2 border-bottom">
+                  <div class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-success mt-1"></i>
+                    <div>
+                      <p class="mb-0 fw-semibold" style="font-size: 0.82rem">
+                        M&A Valuation Model Approved
+                      </p>
+                      <small class="text-muted" style="font-size: 0.72rem"
+                        >12 minutes ago</small
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li class="py-2 border-bottom">
+                  <div class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-shield-virus text-warning mt-1"></i>
+                    <div>
+                      <p class="mb-0 fw-semibold" style="font-size: 0.82rem">
+                        ESG Compliance Report Ready
+                      </p>
+                      <small class="text-muted" style="font-size: 0.72rem"
+                        >2 hours ago</small
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li class="py-2">
+                  <div class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-calendar-days text-info mt-1"></i>
+                    <div>
+                      <p class="mb-0 fw-semibold" style="font-size: 0.82rem">
+                        Executive Strategy Session at 4 PM
+                      </p>
+                      <small class="text-muted" style="font-size: 0.72rem"
+                        >Today</small
+                      >
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- User Menu Dropdown -->
+            <div class="dropdown">
+              <div
+                class="topbar-user-profile"
+                role="button"
+                id="userProfileDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="../assets/images/home/home-team-avatar-1.webp"
+                  alt="User Avatar"
+                  class="topbar-avatar dyn-user-avatar"
+                />
+                <span class="topbar-user-name dyn-user-name"
+                  >Victoria Stirling</span
+                >
+                <i
+                  class="fa-solid fa-chevron-down ms-1"
+                  style="font-size: 0.75rem; color: var(--dash-text-muted)"
+                ></i>
+              </div>
+              <ul
+                class="dropdown-menu dropdown-menu-end shadow-lg border-0 p-2"
+                style="border-radius: 12px; min-width: 220px"
+                aria-labelledby="userProfileDropdown"
+              >
+                <li class="px-3 py-2 border-bottom mb-2">
+                  <div class="fw-bold dyn-user-name" style="font-size: 0.88rem">
+                    Victoria Stirling
+                  </div>
+                  <div
+                    class="text-muted dyn-user-email text-truncate"
+                    style="font-size: 0.75rem"
+                  >
+                    victoria@apexgroup.com
+                  </div>
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger logout-action-btn"
+                    ><i class="fa-solid fa-right-from-bracket me-2"></i> Log
+                    Out</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Content Body -->
+        <div class="dashboard-content">
+          <!-- Universal Hero Welcome Banner (Requirement 3 & 4) -->
+          <div class="dash-welcome-banner">
+            <div class="welcome-title-row">
+              <div class="welcome-text">
+                <h2>
+                  Welcome Back,
+                  <span class="dyn-user-name">Victoria Stirling</span>
+                </h2>
+                <p>
+                  Accessing Stackly Corporate Intelligence Portal &bull; Role:
+                  <strong class="dyn-user-role text-warning"
+                    >Client / Corporate Partner</strong
+                  >
+                  &bull; Account Email:
+                  <span class="dyn-user-email">victoria@apexgroup.com</span>
+                </p>
+              </div>
+              <div class="welcome-meta-badges">
+                <div class="welcome-badge">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <span>256-Bit SSL Live</span>
+                </div>
+                <div class="welcome-badge">
+                  <i class="fa-solid fa-clock"></i>
+                  <span class="dyn-login-time">Session Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================================
+               ROLE 1: CLIENT / CORPORATE PARTNER CONTENT PANES
+               ================================================================= -->
+          <div class="role-section-wrapper active-role" data-role="client">
+            <!-- 1.1 Strategy & Overview Pane -->
+            <div class="role-tab-pane active-pane" id="client-overview">
+              <!-- KPI Row -->
+              <div class="row g-4 mb-4">
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label"
+                        >Active Advisory Engagements</span
+                      >
+                      <div class="metric-icon-box icon-blue">
+                        <i class="fa-solid fa-briefcase"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">4 Initiatives</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-trend-up"></i> 100% on
+                        schedule
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Q3 Advisory Cycle</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Advisory Valuation Gain</span>
+                      <div class="metric-icon-box">
+                        <i class="fa-solid fa-chart-line"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">+28.4%</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-up"></i> +$14.8M Est.
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Synergies unlocked</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Deliverables Approved</span>
+                      <div class="metric-icon-box icon-green">
+                        <i class="fa-solid fa-file-circle-check"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">18 / 22</h3>
+                      <div class="metric-trend trend-neutral">
+                        <i class="fa-solid fa-clock"></i> 4 in final review
+                      </div>
+                      <span class="metric-caption">&bull; SLA 99.2%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Assigned Lead Partner</span>
+                      <div class="metric-icon-box icon-amber">
+                        <i class="fa-solid fa-user-tie"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value" style="font-size: 1.35rem">
+                        Alexander Vance
+                      </h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-circle-check"></i> Senior Partner
+                      </div>
+                      <span class="metric-caption">&bull; Available Today</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Content Grid -->
+              <div class="row g-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h4 class="dash-card-title">
+                        <i class="fa-solid fa-layer-group"></i> Active Strategic
+                        Projects & Milestones
+                      </h4>
+                      <span class="badge bg-dark">Real-Time Tracker</span>
+                    </div>
+                    <div class="dash-card-body p-0">
+                      <div class="table-responsive">
+                        <table class="custom-dash-table">
+                          <thead>
+                            <tr>
+                              <th>Project Code</th>
+                              <th>Engagement Name</th>
+                              <th>Practice Area</th>
+                              <th>Phase Progress</th>
+                              <th>Target Date</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><strong>#STK-904</strong></td>
+                              <td>Transatlantic M&A Due Diligence</td>
+                              <td>Corporate Finance</td>
+                              <td>
+                                <div class="dash-progress-wrap mb-0">
+                                  <div class="dash-progress-bar">
+                                    <div
+                                      class="dash-progress-fill fill-green"
+                                      style="width: 85%"
+                                    ></div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>Oct 28, 2026</td>
+                              <td>
+                                <span class="status-pill status-completed"
+                                  ><i class="fa-solid fa-circle-check"></i> 85%
+                                  Done</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><strong>#STK-842</strong></td>
+                              <td>Enterprise ESG Decarbonization</td>
+                              <td>ESG & Sustainability</td>
+                              <td>
+                                <div class="dash-progress-wrap mb-0">
+                                  <div class="dash-progress-bar">
+                                    <div
+                                      class="dash-progress-fill"
+                                      style="width: 62%"
+                                    ></div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>Nov 15, 2026</td>
+                              <td>
+                                <span class="status-pill status-inprogress"
+                                  ><i class="fa-solid fa-spinner fa-spin"></i>
+                                  In Progress</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><strong>#STK-730</strong></td>
+                              <td>Core ERP Cloud Migration Strategy</td>
+                              <td>Digital Practice</td>
+                              <td>
+                                <div class="dash-progress-wrap mb-0">
+                                  <div class="dash-progress-bar">
+                                    <div
+                                      class="dash-progress-fill fill-blue"
+                                      style="width: 45%"
+                                    ></div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>Dec 10, 2026</td>
+                              <td>
+                                <span class="status-pill status-inprogress"
+                                  ><i class="fa-solid fa-arrows-rotate"></i>
+                                  Active</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><strong>#STK-611</strong></td>
+                              <td>Executive Board Governance Audit</td>
+                              <td>Leadership Advisory</td>
+                              <td>
+                                <div class="dash-progress-wrap mb-0">
+                                  <div class="dash-progress-bar">
+                                    <div
+                                      class="dash-progress-fill fill-purple"
+                                      style="width: 95%"
+                                    ></div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>Oct 12, 2026</td>
+                              <td>
+                                <span class="status-pill status-review"
+                                  ><i class="fa-solid fa-clock"></i> Final
+                                  Review</span
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h4 class="dash-card-title">
+                        <i class="fa-solid fa-bell"></i> Executive Action Items
+                      </h4>
+                    </div>
+                    <div
+                      class="dash-card-body d-flex flex-column justify-content-between"
+                    >
+                      <div class="list-group list-group-flush">
+                        <div class="list-group-item px-0 py-3 border-bottom">
+                          <div
+                            class="d-flex justify-content-between align-items-center mb-1"
+                          >
+                            <h6 class="mb-0 fw-bold" style="font-size: 0.88rem">
+                              Approve Phase 2 Valuation Deck
+                            </h6>
+                            <span class="status-pill status-urgent"
+                              >Urgent</span
+                            >
+                          </div>
+                          <p class="text-muted mb-0" style="font-size: 0.78rem">
+                            Cross-border asset multiple adjustment submitted by
+                            Lead Partner.
+                          </p>
+                        </div>
+                        <div class="list-group-item px-0 py-3 border-bottom">
+                          <div
+                            class="d-flex justify-content-between align-items-center mb-1"
+                          >
+                            <h6 class="mb-0 fw-bold" style="font-size: 0.88rem">
+                              ESG Audit Sign-off
+                            </h6>
+                            <span class="status-pill status-pending"
+                              >Pending</span
+                            >
+                          </div>
+                          <p class="text-muted mb-0" style="font-size: 0.78rem">
+                            Scope 1 & 2 carbon baseline verification report
+                            ready.
+                          </p>
+                        </div>
+                        <div class="list-group-item px-0 py-3">
+                          <div
+                            class="d-flex justify-content-between align-items-center mb-1"
+                          >
+                            <h6 class="mb-0 fw-bold" style="font-size: 0.88rem">
+                              Schedule Q4 Strategy Briefing
+                            </h6>
+                            <span class="status-pill status-completed"
+                              >Upcoming</span
+                            >
+                          </div>
+                          <p class="text-muted mb-0" style="font-size: 0.78rem">
+                            Advisory Desk scheduled sync for Oct 14, 2026.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="mt-3">
+                        <button
+                          type="button"
+                          class="dash-btn-primary w-100 justify-content-center"
+                          data-bs-toggle="modal"
+                          data-bs-target="#consultModal"
+                        >
+                          <i class="fa-solid fa-calendar-plus"></i> Request
+                          Advisory Session
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1.2 Client Active Engagements Pane -->
+            <div class="role-tab-pane" id="client-projects">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-briefcase"></i> Enterprise Engagements
+                    & Contract Terms
+                  </h4>
+                  <button
+                    class="dash-btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newProjectModal"
+                  >
+                    <i class="fa-solid fa-plus"></i> Commission New Engagement
+                  </button>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Contract ID</th>
+                          <th>Engagement Title</th>
+                          <th>Advisory Lead</th>
+                          <th>Budget Allocated</th>
+                          <th>Timeline</th>
+                          <th>Deliverables</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>#ENG-2026-01</strong></td>
+                          <td>Nordic Energy Acquisition Target Analysis</td>
+                          <td>Victoria Stirling (Lead)</td>
+                          <td>$480,000</td>
+                          <td>Aug 2026 - Nov 2026</td>
+                          <td>4 of 5 Delivered</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Active</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#ENG-2026-02</strong></td>
+                          <td>
+                            Supply Chain Restructuring & Tariff Mitigation
+                          </td>
+                          <td>Marcus Vance</td>
+                          <td>$320,000</td>
+                          <td>Sep 2026 - Dec 2026</td>
+                          <td>2 of 6 Delivered</td>
+                          <td>
+                            <span class="status-pill status-inprogress"
+                              >In Progress</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#ENG-2026-03</strong></td>
+                          <td>AI Automation & Data Strategy Roadmap</td>
+                          <td>Dr. Evelyn Vance</td>
+                          <td>$260,000</td>
+                          <td>Oct 2026 - Jan 2027</td>
+                          <td>1 of 4 Delivered</td>
+                          <td>
+                            <span class="status-pill status-pending"
+                              >Kick-off</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#ENG-2026-04</strong></td>
+                          <td>Executive Compensation & Retention Framework</td>
+                          <td>Helena Rossi</td>
+                          <td>$190,000</td>
+                          <td>Jul 2026 - Oct 2026</td>
+                          <td>Complete</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Concluded</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1.3 Client Deliverables Vault Pane -->
+            <div class="role-tab-pane" id="client-deliverables">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-vault"></i> Confidential Advisory
+                    Document Vault
+                  </h4>
+                  <span class="badge bg-success"
+                    ><i class="fa-solid fa-lock"></i> Encrypted Repository</span
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Document Title</th>
+                          <th>Category</th>
+                          <th>Published Date</th>
+                          <th>File Size</th>
+                          <th>Security Level</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <i
+                              class="fa-solid fa-file-pdf text-danger me-2"
+                            ></i>
+                            <strong
+                              >Q3 Valuation & Multiple Benchmark
+                              Deck.pdf</strong
+                            >
+                          </td>
+                          <td>Corporate Finance</td>
+                          <td>Oct 01, 2026</td>
+                          <td>14.2 MB</td>
+                          <td>
+                            <span class="badge bg-danger"
+                              >Strictly Confidential</span
+                            >
+                          </td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download="Q3_Valuation_Deck.pdf"
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-download"></i> Download</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <i
+                              class="fa-solid fa-file-lines text-primary me-2"
+                            ></i>
+                            <strong
+                              >Post-Merger Operational Synergies
+                              Blueprint.docx</strong
+                            >
+                          </td>
+                          <td>M&A Advisory</td>
+                          <td>Sep 24, 2026</td>
+                          <td>6.8 MB</td>
+                          <td>
+                            <span class="badge bg-warning text-dark"
+                              >Executive Restricted</span
+                            >
+                          </td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download="Synergies_Blueprint.docx"
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-download"></i> Download</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <i
+                              class="fa-solid fa-file-shield text-success me-2"
+                            ></i>
+                            <strong
+                              >Enterprise ESG Taxonomy & Carbon
+                              Audit.pdf</strong
+                            >
+                          </td>
+                          <td>ESG Advisory</td>
+                          <td>Sep 18, 2026</td>
+                          <td>22.5 MB</td>
+                          <td>
+                            <span class="badge bg-info">Board Cleared</span>
+                          </td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download="ESG_Audit_Report.pdf"
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-download"></i> Download</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <i
+                              class="fa-solid fa-file-excel text-success me-2"
+                            ></i>
+                            <strong
+                              >Financial Pro-Forma Forecast Models
+                              2026-2030.xlsx</strong
+                            >
+                          </td>
+                          <td>Financial Modeling</td>
+                          <td>Sep 10, 2026</td>
+                          <td>9.1 MB</td>
+                          <td>
+                            <span class="badge bg-danger"
+                              >Strictly Confidential</span
+                            >
+                          </td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download="Financial_ProForma.xlsx"
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-download"></i> Download</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1.4 Client Invoices & Billing Pane -->
+            <div class="role-tab-pane" id="client-billing">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-receipt"></i> Retainer Statements &
+                    Milestone Billing
+                  </h4>
+                  <span class="status-pill status-gold"
+                    ><i class="fa-solid fa-shield-check"></i> Net 30 Terms</span
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Invoice Ref</th>
+                          <th>Billing Description</th>
+                          <th>Invoice Date</th>
+                          <th>Due Date</th>
+                          <th>Amount (USD)</th>
+                          <th>Payment Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>#INV-STK-9042</strong></td>
+                          <td>
+                            Q3 Monthly Advisory Retainer - Strategy Practice
+                          </td>
+                          <td>Oct 01, 2026</td>
+                          <td>Oct 31, 2026</td>
+                          <td>$75,000.00</td>
+                          <td>
+                            <span class="status-pill status-pending"
+                              ><i class="fa-solid fa-clock"></i> Awaiting Net
+                              30</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#INV-STK-8821</strong></td>
+                          <td>M&A Deal Closing Milestone Fee</td>
+                          <td>Sep 15, 2026</td>
+                          <td>Sep 30, 2026</td>
+                          <td>$140,000.00</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              ><i class="fa-solid fa-check"></i> Paid
+                              (Wire)</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#INV-STK-8410</strong></td>
+                          <td>Digital Practice Cloud Strategy Phase 1</td>
+                          <td>Aug 15, 2026</td>
+                          <td>Aug 31, 2026</td>
+                          <td>$95,000.00</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              ><i class="fa-solid fa-check"></i> Paid
+                              (Wire)</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1.5 Client Consultation Scheduler Pane -->
+            <div class="role-tab-pane" id="client-consultation">
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h4 class="dash-card-title">
+                        <i class="fa-solid fa-calendar-days"></i> Book Advisory
+                        Sync
+                      </h4>
+                    </div>
+                    <div class="dash-card-body">
+                      <form id="consultationForm">
+                        <div class="mb-3">
+                          <label
+                            class="form-label fw-semibold"
+                            style="font-size: 0.85rem"
+                            >Advisory Practice Focus</label
+                          >
+                          <select class="form-select" required>
+                            <option value="ma">
+                              Mergers & Acquisitions Structuring
+                            </option>
+                            <option value="esg">
+                              ESG Compliance & Climate Strategy
+                            </option>
+                            <option value="finance">
+                              Capital Allocation & Financial Health
+                            </option>
+                            <option value="digital">
+                              Enterprise Tech & AI Modernization
+                            </option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                          <label
+                            class="form-label fw-semibold"
+                            style="font-size: 0.85rem"
+                            >Select Managing Partner</label
+                          >
+                          <select class="form-select" required>
+                            <option value="vance">
+                              Alexander Vance (Senior Partner - M&A)
+                            </option>
+                            <option value="stirling">
+                              Victoria Stirling (Managing Director)
+                            </option>
+                            <option value="rossi">
+                              Helena Rossi (CEO & Strategic Practices)
+                            </option>
+                          </select>
+                        </div>
+                        <div class="row g-2 mb-3">
+                          <div class="col-6">
+                            <label
+                              class="form-label fw-semibold"
+                              style="font-size: 0.85rem"
+                              >Preferred Date</label
+                            >
+                            <input
+                              type="date"
+                              class="form-control"
+                              value="2026-10-15"
+                              required
+                            />
+                          </div>
+                          <div class="col-6">
+                            <label
+                              class="form-label fw-semibold"
+                              style="font-size: 0.85rem"
+                              >Time Slot (GMT)</label
+                            >
+                            <select class="form-select" required>
+                              <option>10:00 AM - 11:30 AM</option>
+                              <option>02:00 PM - 03:30 PM</option>
+                              <option>04:30 PM - 06:00 PM</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label
+                            class="form-label fw-semibold"
+                            style="font-size: 0.85rem"
+                            >Key Executive Objectives</label
+                          >
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            placeholder="Outline agenda items or transactions to discuss..."
+                          ></textarea>
+                        </div>
+                        <button
+                          type="submit"
+                          class="dash-btn-primary w-100 justify-content-center"
+                        >
+                          <i class="fa-solid fa-paper-plane"></i> Confirm
+                          Advisory Appointment
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h4 class="dash-card-title">
+                        <i class="fa-solid fa-video"></i> Confirmed Advisory
+                        Meetings
+                      </h4>
+                    </div>
+                    <div class="dash-card-body p-0">
+                      <div class="table-responsive">
+                        <table class="custom-dash-table">
+                          <thead>
+                            <tr>
+                              <th>Date & Time</th>
+                              <th>Partner</th>
+                              <th>Agenda Focus</th>
+                              <th>Format</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                Oct 08, 2026<br /><small class="text-muted"
+                                  >11:00 AM GMT</small
+                                >
+                              </td>
+                              <td>Alexander Vance</td>
+                              <td>M&A Multiple Verification</td>
+                              <td>
+                                <span class="status-pill status-completed"
+                                  ><i class="fa-solid fa-video"></i> Zoom
+                                  Room</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Oct 14, 2026<br /><small class="text-muted"
+                                  >03:30 PM GMT</small
+                                >
+                              </td>
+                              <td>Helena Rossi</td>
+                              <td>Q4 Strategic Alignment</td>
+                              <td>
+                                <span class="status-pill status-gold"
+                                  ><i class="fa-solid fa-building"></i> London
+                                  HQ</span
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1.6 Client Feedback & SLA Pane -->
+            <div class="role-tab-pane" id="client-feedback">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-star-half-stroke"></i> Client
+                    Satisfaction & SLA Performance
+                  </h4>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded text-center border">
+                        <h2 class="fw-bold text-success mb-1">9.8 / 10</h2>
+                        <span class="text-muted" style="font-size: 0.85rem"
+                          >Net Promoter Score (NPS)</span
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded text-center border">
+                        <h2 class="fw-bold text-primary mb-1">99.4%</h2>
+                        <span class="text-muted" style="font-size: 0.85rem"
+                          >Deliverable On-Time SLA</span
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded text-center border">
+                        <h2 class="fw-bold text-warning mb-1">100%</h2>
+                        <span class="text-muted" style="font-size: 0.85rem"
+                          >Partner Responsiveness</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="fw-bold mb-3" style="font-size: 0.95rem">
+                    Submit Engagement Performance Review
+                  </h5>
+                  <form id="feedbackForm">
+                    <div class="mb-3">
+                      <label class="form-label" style="font-size: 0.85rem"
+                        >How satisfied are you with our strategic
+                        deliverables?</label
+                      >
+                      <select class="form-select">
+                        <option>
+                          Exceptional - Exceeded Strategic Targets (5/5)
+                        </option>
+                        <option>Very Satisfied - Met All Targets (4/5)</option>
+                        <option>Satisfactory - Acceptable Quality (3/5)</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" style="font-size: 0.85rem"
+                        >Specific Feedback or Partner Commendation</label
+                      >
+                      <textarea
+                        class="form-control"
+                        rows="3"
+                        placeholder="Provide notes on team collaboration, analytics quality..."
+                      ></textarea>
+                    </div>
+                    <button type="submit" class="dash-btn-primary">
+                      <i class="fa-solid fa-check"></i> Submit Feedback Report
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================================
+               ROLE 2: SENIOR CONSULTANT / ADVISOR PANES
+               ================================================================= -->
+          <div class="role-section-wrapper" data-role="consultant">
+            <!-- 2.1 Consultant Cockpit -->
+            <div class="role-tab-pane" id="consultant-cockpit">
+              <div class="row g-4 mb-4">
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Billable Utilization</span>
+                      <div class="metric-icon-box icon-green">
+                        <i class="fa-solid fa-clock"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">94.2%</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-up"></i> +6.1% vs Target
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; 38.5 hrs logged this week</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Active Client Accounts</span>
+                      <div class="metric-icon-box icon-blue">
+                        <i class="fa-solid fa-building-user"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">8 Portfolios</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-circle-check"></i> All in Green
+                        Health
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Tier-1 Enterprises</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Deliverables Due</span>
+                      <div class="metric-icon-box icon-amber">
+                        <i class="fa-solid fa-calendar-day"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">6 Milestones</h3>
+                      <div class="metric-trend trend-down">
+                        <i class="fa-solid fa-triangle-exclamation"></i> 2 due
+                        Friday
+                      </div>
+                      <span class="metric-caption">&bull; Review required</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label"
+                        >Quarterly Advisory Fee Log</span
+                      >
+                      <div class="metric-icon-box">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">$640,000</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-trend-up"></i> 112% Quota
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Q3 Advisory Commission</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-table-list"></i> Assigned Client
+                    Accounts & Project Status
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Client Enterprise</th>
+                          <th>Engagement Focus</th>
+                          <th>Retainer Value</th>
+                          <th>Deliverables Health</th>
+                          <th>Next Milestone</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Apex Meridian Group</strong></td>
+                          <td>Cross-Border M&A Valuation</td>
+                          <td>$480,000</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Green (98%)</span
+                            >
+                          </td>
+                          <td>Oct 10 (Deck Sign-off)</td>
+                          <td>
+                            <button class="tbl-btn" data-mock-404="true">
+                              <i class="fa-solid fa-eye"></i> View File
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Vanguard Nordic Tech</strong></td>
+                          <td>Cloud Cost Modernization</td>
+                          <td>$320,000</td>
+                          <td>
+                            <span class="status-pill status-inprogress"
+                              >Yellow (80%)</span
+                            >
+                          </td>
+                          <td>Oct 15 (Architecture Doc)</td>
+                          <td>
+                            <button class="tbl-btn" data-mock-404="true">
+                              <i class="fa-solid fa-eye"></i> View File
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sovereign Logistics PLC</strong></td>
+                          <td>ESG & Carbon Footprint Audit</td>
+                          <td>$250,000</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Green (95%)</span
+                            >
+                          </td>
+                          <td>Oct 20 (Board Presentation)</td>
+                          <td>
+                            <button class="tbl-btn" data-mock-404="true">
+                              <i class="fa-solid fa-eye"></i> View File
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2.2 Consultant Portfolios -->
+            <div class="role-tab-pane" id="consultant-clients">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-building-user"></i> Full Advisory
+                    Client Portfolio Directory
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Account Name</th>
+                          <th>HQ Location</th>
+                          <th>Key Stakeholder</th>
+                          <th>Contract Term</th>
+                          <th>Total Engagement Value</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Apex Meridian Group</strong></td>
+                          <td>London, UK</td>
+                          <td>Victoria Stirling (MD)</td>
+                          <td>24 Months</td>
+                          <td>$1,200,000</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Active</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Vanguard Nordic Tech</strong></td>
+                          <td>Stockholm, SE</td>
+                          <td>Carl Lindqvist (CTO)</td>
+                          <td>12 Months</td>
+                          <td>$650,000</td>
+                          <td>
+                            <span class="status-pill status-inprogress"
+                              >Active</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sovereign Logistics PLC</strong></td>
+                          <td>Rotterdam, NL</td>
+                          <td>Jan Van Dijk (COO)</td>
+                          <td>18 Months</td>
+                          <td>$840,000</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Active</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Geneva BioSciences SA</strong></td>
+                          <td>Geneva, CH</td>
+                          <td>Dr. Michel Favre (CEO)</td>
+                          <td>36 Months</td>
+                          <td>$2,100,000</td>
+                          <td>
+                            <span class="status-pill status-gold"
+                              >Strategic Tier-1</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2.3 Deliverables Pipeline -->
+            <div class="role-tab-pane" id="consultant-deliverables">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-list-check"></i> Deliverables
+                    Production Pipeline & Due Dates
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Deliverable Name</th>
+                          <th>Client Account</th>
+                          <th>Author / Team</th>
+                          <th>Review Partner</th>
+                          <th>Due Date</th>
+                          <th>Workflow State</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>M&A Multiples Model v3.4</strong></td>
+                          <td>Apex Meridian Group</td>
+                          <td>Marcus Vance</td>
+                          <td>Alexander Vance</td>
+                          <td>Oct 10, 2026</td>
+                          <td>
+                            <span class="status-pill status-review"
+                              >Partner Review</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Scope 1-3 Carbon Baseline Ledger</strong>
+                          </td>
+                          <td>Sovereign Logistics PLC</td>
+                          <td>Marcus Vance + Analyst Team</td>
+                          <td>Helena Rossi</td>
+                          <td>Oct 18, 2026</td>
+                          <td>
+                            <span class="status-pill status-inprogress"
+                              >Drafting</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Cloud Migration ROI Synthesis</strong>
+                          </td>
+                          <td>Vanguard Nordic Tech</td>
+                          <td>Marcus Vance</td>
+                          <td>Dr. Evelyn Vance</td>
+                          <td>Oct 22, 2026</td>
+                          <td>
+                            <span class="status-pill status-pending"
+                              >Data Gathering</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2.4 Timesheet & Billing -->
+            <div class="role-tab-pane" id="consultant-timesheet">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Weekly
+                    Advisory Timesheet Logging
+                  </h4>
+                </div>
+                <div class="dash-card-body">
+                  <form
+                    id="timesheetForm"
+                    class="mb-4 p-3 bg-light rounded border"
+                  >
+                    <div class="row g-3">
+                      <div class="col-md-3">
+                        <label
+                          class="form-label fw-bold"
+                          style="font-size: 0.8rem"
+                          >Charge Code</label
+                        >
+                        <select class="form-select">
+                          <option>#STK-904 (Apex M&A)</option>
+                          <option>#STK-842 (Sovereign ESG)</option>
+                          <option>#STK-730 (Vanguard Tech)</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <label
+                          class="form-label fw-bold"
+                          style="font-size: 0.8rem"
+                          >Date of Service</label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          value="2026-10-01"
+                        />
+                      </div>
+                      <div class="col-md-2">
+                        <label
+                          class="form-label fw-bold"
+                          style="font-size: 0.8rem"
+                          >Hours</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          value="6.5"
+                          step="0.5"
+                        />
+                      </div>
+                      <div class="col-md-4 d-flex align-items-end">
+                        <button
+                          type="submit"
+                          class="dash-btn-primary w-100 justify-content-center"
+                        >
+                          <i class="fa-solid fa-plus"></i> Record Hours
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Client Account</th>
+                          <th>Activity Description</th>
+                          <th>Hours</th>
+                          <th>Billing Rate</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Oct 01, 2026</td>
+                          <td>Apex Meridian Group</td>
+                          <td>Valuation model sensitivity stress-testing</td>
+                          <td>6.5 hrs</td>
+                          <td>$550 / hr</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Approved</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Sep 30, 2026</td>
+                          <td>Sovereign Logistics PLC</td>
+                          <td>
+                            ESG supply chain data ingestion & reconciliation
+                          </td>
+                          <td>8.0 hrs</td>
+                          <td>$550 / hr</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Approved</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Sep 29, 2026</td>
+                          <td>Vanguard Nordic Tech</td>
+                          <td>
+                            Architecture sync with CTO & engineering leads
+                          </td>
+                          <td>5.0 hrs</td>
+                          <td>$550 / hr</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Approved</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2.5 Advisory Frameworks -->
+            <div class="role-tab-pane" id="consultant-frameworks">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-book-bookmark"></i> Stackly
+                    Proprietary Advisory Frameworks
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Framework Name</th>
+                          <th>Version</th>
+                          <th>Practice Area</th>
+                          <th>Authoring Committee</th>
+                          <th>Access</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong
+                              >Stackly M&A Multiple Valuation Matrix
+                              2026</strong
+                            >
+                          </td>
+                          <td>v4.2</td>
+                          <td>Corporate Finance</td>
+                          <td>Global M&A Practice Group</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download
+                              PDF</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >CSRD & SEC Climate Disclosure Roadmap</strong
+                            >
+                          </td>
+                          <td>v3.1</td>
+                          <td>ESG & Sustainability</td>
+                          <td>ESG Council London</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download
+                              PDF</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >Digital Turnaround & Cloud Optimization
+                              Protocol</strong
+                            >
+                          </td>
+                          <td>v2.8</td>
+                          <td>Digital Modernization</td>
+                          <td>Tech Advisory Lab</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download
+                              PDF</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2.6 Client Meetings -->
+            <div class="role-tab-pane" id="consultant-meetings">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-handshake"></i> Upcoming Consultant
+                    Readouts & Briefings
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Session Date</th>
+                          <th>Client</th>
+                          <th>Executive Attendees</th>
+                          <th>Topic</th>
+                          <th>Meeting Link</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Oct 05, 2026 (02:00 PM)</td>
+                          <td>Apex Meridian Group</td>
+                          <td>Victoria Stirling (MD), Chief Counsel</td>
+                          <td>Pre-Bid Valuation Model Review</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              ><i class="fa-solid fa-video"></i> Secured
+                              Link</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Oct 08, 2026 (10:00 AM)</td>
+                          <td>Sovereign Logistics PLC</td>
+                          <td>Board Audit Committee</td>
+                          <td>Q3 Scope 1-3 Findings Readout</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              ><i class="fa-solid fa-video"></i> Secured
+                              Link</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================================
+               ROLE 3: ENTERPRISE EXECUTIVE / C-SUITE PANES
+               ================================================================= -->
+          <div class="role-section-wrapper" data-role="executive">
+            <!-- 3.1 Executive Command Center -->
+            <div class="role-tab-pane" id="executive-overview">
+              <div class="row g-4 mb-4">
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label"
+                        >Firm-Wide Advisory Revenue</span
+                      >
+                      <div class="metric-icon-box">
+                        <i class="fa-solid fa-sterling-sign"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">£48.6M</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-trend-up"></i> +18.4% YoY
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Q3 Advisory Pace</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">EBITDA Margin</span>
+                      <div class="metric-icon-box icon-green">
+                        <i class="fa-solid fa-percent"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">34.8%</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-up"></i> +2.3% vs Budget
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Premium realization</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label"
+                        >Active Advisory Retainers</span
+                      >
+                      <div class="metric-icon-box icon-blue">
+                        <i class="fa-solid fa-handshake"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">64 Retainers</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-circle-check"></i> 96% Renewal
+                        Rate
+                      </div>
+                      <span class="metric-caption">&bull; Global Tier-1</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Assets Under Advisory</span>
+                      <div class="metric-icon-box icon-purple">
+                        <i class="fa-solid fa-vault"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">£14.2 Billion</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-up"></i> Global Scale
+                      </div>
+                      <span class="metric-caption">&bull; 45+ Markets</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h4 class="dash-card-title">
+                        <i class="fa-solid fa-globe"></i> Global Practice
+                        Revenue Distribution
+                      </h4>
+                    </div>
+                    <div class="dash-card-body">
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-header">
+                          <span>Mergers & Acquisitions (M&A) Advisory</span>
+                          <span class="fw-bold">£21.4M (44%)</span>
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill"
+                            style="width: 44%"
+                          ></div>
+                        </div>
+                      </div>
+
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-header">
+                          <span>ESG & Decarbonization Practice</span>
+                          <span class="fw-bold">£12.2M (25%)</span>
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill fill-green"
+                            style="width: 25%"
+                          ></div>
+                        </div>
+                      </div>
+
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-header">
+                          <span>Digital Enterprise & AI Transformation</span>
+                          <span class="fw-bold">£9.5M (20%)</span>
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill fill-blue"
+                            style="width: 20%"
+                          ></div>
+                        </div>
+                      </div>
+
+                      <div class="dash-progress-wrap">
+                        <div class="dash-progress-header">
+                          <span>Executive Governance & Restructuring</span>
+                          <span class="fw-bold">£5.5M (11%)</span>
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill fill-purple"
+                            style="width: 11%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h4 class="dash-card-title">
+                        <i class="fa-solid fa-city"></i> Regional Office Matrix
+                      </h4>
+                    </div>
+                    <div class="dash-card-body p-0">
+                      <div class="table-responsive">
+                        <table class="custom-dash-table">
+                          <thead>
+                            <tr>
+                              <th>Hub</th>
+                              <th>Revenue</th>
+                              <th>Health</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><strong>London (HQ)</strong></td>
+                              <td>£24.8M</td>
+                              <td>
+                                <span class="status-pill status-completed"
+                                  >108%</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><strong>New York</strong></td>
+                              <td>$16.2M</td>
+                              <td>
+                                <span class="status-pill status-completed"
+                                  >102%</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><strong>Singapore</strong></td>
+                              <td>S$12.5M</td>
+                              <td>
+                                <span class="status-pill status-completed"
+                                  >114%</span
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><strong>Dubai (DIFC)</strong></td>
+                              <td>AED 22M</td>
+                              <td>
+                                <span class="status-pill status-inprogress"
+                                  >97%</span
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.2 Global Practice Matrix -->
+            <div class="role-tab-pane" id="executive-practices">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-sitemap"></i> Practice Line P&L
+                    Breakdown
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Practice Division</th>
+                          <th>Practice Leader</th>
+                          <th>Consultant Count</th>
+                          <th>Billable Rate Avg</th>
+                          <th>Quarterly Margin</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>Global M&A & Corporate Finance</strong>
+                          </td>
+                          <td>Alexander Vance</td>
+                          <td>42 Advisors</td>
+                          <td>£620 / hr</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >38.2%</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>ESG, Climate & Sustainable Strategy</strong>
+                          </td>
+                          <td>Victoria Stirling</td>
+                          <td>28 Advisors</td>
+                          <td>£540 / hr</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >33.5%</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >Digital Enterprise & Tech Modernization</strong
+                            >
+                          </td>
+                          <td>Dr. Evelyn Vance</td>
+                          <td>35 Advisors</td>
+                          <td>£580 / hr</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >35.0%</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.3 M&A Pipeline -->
+            <div class="role-tab-pane" id="executive-pipeline">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-hand-holding-dollar"></i> Active M&A
+                    Deals & Transaction Mandates
+                  </h4>
+                  <span class="status-pill status-gold"
+                    >Pipeline: £4.2 Billion</span
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Mandate Code</th>
+                          <th>Transaction Description</th>
+                          <th>Deal Size (Enterprise Value)</th>
+                          <th>Probability</th>
+                          <th>Success Fee</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>#DEAL-912</strong></td>
+                          <td>Project Aurora (Renewable Energy Buyout)</td>
+                          <td>£1,400,000,000</td>
+                          <td>85%</td>
+                          <td>£14.0M</td>
+                          <td>
+                            <span class="status-pill status-review"
+                              >Exclusivity</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#DEAL-844</strong></td>
+                          <td>Project Vanguard (Nordic SaaS Consolidation)</td>
+                          <td>£650,000,000</td>
+                          <td>90%</td>
+                          <td>£8.5M</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Definitive Agreement</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#DEAL-780</strong></td>
+                          <td>
+                            Project Titan (Cross-Border Logistics Take-Private)
+                          </td>
+                          <td>£2,150,000,000</td>
+                          <td>60%</td>
+                          <td>£22.0M</td>
+                          <td>
+                            <span class="status-pill status-inprogress"
+                              >Due Diligence</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.4 Financial Health -->
+            <div class="role-tab-pane" id="executive-financials">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-coins"></i> Firm P&L Statement Summary
+                    (FY2026)
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>P&L Line Item</th>
+                          <th>Q1 Actual</th>
+                          <th>Q2 Actual</th>
+                          <th>Q3 Projected</th>
+                          <th>Full Year Target</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Gross Advisory Billing</strong></td>
+                          <td>£14.8M</td>
+                          <td>£16.2M</td>
+                          <td>£17.6M</td>
+                          <td>£65.0M</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Consultant Cost of Delivery</strong></td>
+                          <td>£7.2M</td>
+                          <td>£7.8M</td>
+                          <td>£8.1M</td>
+                          <td>£31.0M</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Operating Expenses & Technology</strong>
+                          </td>
+                          <td>£2.5M</td>
+                          <td>£2.6M</td>
+                          <td>£2.8M</td>
+                          <td>£10.5M</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Net Operating EBITDA</strong></td>
+                          <td><strong>£5.1M (34.5%)</strong></td>
+                          <td><strong>£5.8M (35.8%)</strong></td>
+                          <td><strong>£6.7M (38.0%)</strong></td>
+                          <td><strong>£23.5M (36.1%)</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.5 Strategy Roadmap -->
+            <div class="role-tab-pane" id="executive-roadmap">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-compass-drafting"></i> Stackly Horizon
+                    2026-2030 Strategic Roadmap
+                  </h4>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4">
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded border h-100">
+                        <h5 class="fw-bold text-dark">
+                          <i
+                            class="fa-solid fa-microchip text-warning me-2"
+                          ></i>
+                          AI Advisory Platform
+                        </h5>
+                        <p class="text-muted mb-0" style="font-size: 0.84rem">
+                          Launch proprietary automated M&A valuation modeling
+                          engine to compress due diligence timelines by 60%.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded border h-100">
+                        <h5 class="fw-bold text-dark">
+                          <i
+                            class="fa-solid fa-earth-asia text-primary me-2"
+                          ></i>
+                          Tokyo & Riyadh Expansion
+                        </h5>
+                        <p class="text-muted mb-0" style="font-size: 0.84rem">
+                          Establish Tier-1 advisory offices in Japan and Saudi
+                          Arabia to capture sovereign wealth fund advisory
+                          mandates.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded border h-100">
+                        <h5 class="fw-bold text-dark">
+                          <i
+                            class="fa-solid fa-users-gear text-success me-2"
+                          ></i>
+                          Senior Partner Recruitment
+                        </h5>
+                        <p class="text-muted mb-0" style="font-size: 0.84rem">
+                          Appoint 15 lateral managing directors across
+                          sustainability and corporate restructuring practices.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.6 Board Memorandums -->
+            <div class="role-tab-pane" id="executive-board">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-landmark"></i> Executive Committee &
+                    Board Briefings
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Memorandum Title</th>
+                          <th>Presented By</th>
+                          <th>Session Date</th>
+                          <th>Action Required</th>
+                          <th>Document</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong
+                              >Q3 Executive Performance & Capital
+                              Distribution</strong
+                            >
+                          </td>
+                          <td>Helena Rossi (CEO)</td>
+                          <td>Oct 12, 2026</td>
+                          <td>Board Ratification</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >Project Titan Transaction Guarantee
+                              Approval</strong
+                            >
+                          </td>
+                          <td>Alexander Vance (Senior Partner)</td>
+                          <td>Sep 28, 2026</td>
+                          <td>Risk Committee Sign-off</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================================
+               ROLE 4: BOARD MEMBER / STAKEHOLDER PANES
+               ================================================================= -->
+          <div class="role-section-wrapper" data-role="stakeholder">
+            <!-- 4.1 Governance & Oversight -->
+            <div class="role-tab-pane" id="stakeholder-governance">
+              <div class="row g-4 mb-4">
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Shareholder Value CAGR</span>
+                      <div class="metric-icon-box icon-purple">
+                        <i class="fa-solid fa-chart-bar"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">+22.8%</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-up"></i> 5-Year Average
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Outperforming FTSE Advisory</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Enterprise Risk Index</span>
+                      <div class="metric-icon-box icon-green">
+                        <i class="fa-solid fa-shield"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">Low Risk (98/100)</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-check"></i> Full Compliance
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Zero Material Exceptions</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">Dividend Yield (TTM)</span>
+                      <div class="metric-icon-box">
+                        <i class="fa-solid fa-coins"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">6.8% Yield</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-arrow-up"></i> £1.42 / share
+                      </div>
+                      <span class="metric-caption">&bull; Payable Nov 15</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-card-header">
+                      <span class="metric-label">ESG Governance Rating</span>
+                      <div class="metric-icon-box icon-blue">
+                        <i class="fa-solid fa-award"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 class="metric-value">AAA Rated</h3>
+                      <div class="metric-trend trend-up">
+                        <i class="fa-solid fa-circle-check"></i> MSCI Top Decile
+                      </div>
+                      <span class="metric-caption"
+                        >&bull; Net Zero Target 2030</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-scale-balanced"></i> Board Governance
+                    Committees & Charters
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Committee</th>
+                          <th>Chairperson</th>
+                          <th>Independent Members</th>
+                          <th>Meeting Frequency</th>
+                          <th>Next Audit Review</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>Audit & Risk Oversight Committee</strong>
+                          </td>
+                          <td>Lord Arthur Sterling</td>
+                          <td>4 Independent Directors</td>
+                          <td>Quarterly</td>
+                          <td>Oct 18, 2026</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Nomination & Executive Compensation</strong>
+                          </td>
+                          <td>Lady Diana Montgomery</td>
+                          <td>3 Independent Directors</td>
+                          <td>Bi-Annual</td>
+                          <td>Nov 04, 2026</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Sustainability & Ethics Council</strong>
+                          </td>
+                          <td>Sir Alistair Finch</td>
+                          <td>3 Independent Directors</td>
+                          <td>Quarterly</td>
+                          <td>Oct 25, 2026</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.2 Shareholder Equity -->
+            <div class="role-tab-pane" id="stakeholder-equity">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-chart-line-up"></i> Shareholder
+                    Equity, Dividends & Cap Table
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Share Class</th>
+                          <th>Shares Outstanding</th>
+                          <th>Par Value</th>
+                          <th>Dividend Per Share</th>
+                          <th>Total Payout (GBP)</th>
+                          <th>Record Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>Class A Voting Ordinary Shares</strong>
+                          </td>
+                          <td>24,000,000</td>
+                          <td>£1.00</td>
+                          <td>£1.42</td>
+                          <td>£34,080,000</td>
+                          <td>Oct 31, 2026</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>Class B Preferred Advisory Shares</strong>
+                          </td>
+                          <td>6,000,000</td>
+                          <td>£5.00</td>
+                          <td>£3.80</td>
+                          <td>£22,800,000</td>
+                          <td>Oct 31, 2026</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.3 Strategic Audits -->
+            <div class="role-tab-pane" id="stakeholder-audits">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-clipboard-check"></i> Independent
+                    Statutory Audits & Assurances
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Audit Scope</th>
+                          <th>Independent Auditor</th>
+                          <th>Assurance Opinion</th>
+                          <th>Filing Date</th>
+                          <th>Full Audit File</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong
+                              >Annual Consolidated Statutory Financial
+                              Audit</strong
+                            >
+                          </td>
+                          <td>PricewaterhouseCoopers LLP</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Unqualified Clean Opinion</span
+                            >
+                          </td>
+                          <td>Sep 15, 2026</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download
+                              PDF</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >SOC2 Type II Cloud & Data Privacy
+                              Assurance</strong
+                            >
+                          </td>
+                          <td>Deloitte Risk Advisory</td>
+                          <td>
+                            <span class="status-pill status-completed"
+                              >Certified Compliant</span
+                            >
+                          </td>
+                          <td>Aug 20, 2026</td>
+                          <td>
+                            <a
+                              href="../assets/images/logoStackly.webp"
+                              download
+                              class="tbl-btn tbl-btn-outline"
+                              ><i class="fa-solid fa-file-pdf"></i> Download
+                              PDF</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.4 ESG & Risk Matrix -->
+            <div class="role-tab-pane" id="stakeholder-esg">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-seedling"></i> ESG Governance &
+                    Corporate Risk Heatmap
+                  </h4>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4">
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded border text-center">
+                        <h4 class="fw-bold text-success mb-1">
+                          Scope 1 & 2 Neutral
+                        </h4>
+                        <p class="text-muted mb-0" style="font-size: 0.8rem">
+                          100% Renewable energy across all European & Americas
+                          advisory hubs.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded border text-center">
+                        <h4 class="fw-bold text-primary mb-1">
+                          45% Board Diversity
+                        </h4>
+                        <p class="text-muted mb-0" style="font-size: 0.8rem">
+                          Exceeding Hampton-Alexander & FTSE Women on Boards
+                          governance quotas.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="p-3 bg-light rounded border text-center">
+                        <h4 class="fw-bold text-warning mb-1">
+                          Zero Breach Record
+                        </h4>
+                        <p class="text-muted mb-0" style="font-size: 0.8rem">
+                          10 consecutive years with zero cybersecurity or
+                          confidentiality disclosures.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.5 Market Disclosures -->
+            <div class="role-tab-pane" id="stakeholder-investors">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-newspaper"></i> Regulatory Filings &
+                    Market Disclosures
+                  </h4>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="custom-dash-table">
+                      <thead>
+                        <tr>
+                          <th>Disclosure Headline</th>
+                          <th>Regulator</th>
+                          <th>Release Date</th>
+                          <th>Impact Classification</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong
+                              >Stackly Q3 Advisory Retainer Volume Exceeds
+                              Annual Forecast by 18%</strong
+                            >
+                          </td>
+                          <td>LSE Regulatory News</td>
+                          <td>Oct 01, 2026</td>
+                          <td>
+                            <span class="badge bg-success"
+                              >Material Growth</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >Board Declares Interim Dividend of £1.42 per
+                              Ordinary Share</strong
+                            >
+                          </td>
+                          <td>FCA Market Disclosures</td>
+                          <td>Sep 20, 2026</td>
+                          <td>
+                            <span class="badge bg-info"
+                              >Dividend Distribution</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4.6 AGM Voting Portal -->
+            <div class="role-tab-pane" id="stakeholder-agm">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h4 class="dash-card-title">
+                    <i class="fa-solid fa-check-to-slot"></i> Annual General
+                    Meeting (AGM) Proxy Ballot
+                  </h4>
+                  <span class="status-pill status-gold"
+                    >AGM Date: Nov 20, 2026</span
+                  >
+                </div>
+                <div class="dash-card-body">
+                  <form id="agmVoteForm">
+                    <div class="list-group mb-4">
+                      <div class="list-group-item p-3">
+                        <h6 class="fw-bold mb-1">
+                          Resolution 1: Re-appointment of Statutory Auditors
+                          (PwC LLP)
+                        </h6>
+                        <p class="text-muted mb-2" style="font-size: 0.8rem">
+                          To approve the re-appointment of
+                          PricewaterhouseCoopers LLP as independent auditors of
+                          the Company.
+                        </p>
+                        <div class="d-flex gap-3">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="res1"
+                              id="res1_for"
+                              checked
+                            /><label class="form-check-label" for="res1_for"
+                              >FOR</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="res1"
+                              id="res1_against"
+                            /><label class="form-check-label" for="res1_against"
+                              >AGAINST</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="res1"
+                              id="res1_abstain"
+                            /><label class="form-check-label" for="res1_abstain"
+                              >ABSTAIN</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="list-group-item p-3">
+                        <h6 class="fw-bold mb-1">
+                          Resolution 2: Authorization of Capital Allocation for
+                          Tokyo Hub Expansion
+                        </h6>
+                        <p class="text-muted mb-2" style="font-size: 0.8rem">
+                          To authorize the executive committee to allocate £15M
+                          towards strategic infrastructure in Japan.
+                        </p>
+                        <div class="d-flex gap-3">
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="res2"
+                              id="res2_for"
+                              checked
+                            /><label class="form-check-label" for="res2_for"
+                              >FOR</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="res2"
+                              id="res2_against"
+                            /><label class="form-check-label" for="res2_against"
+                              >AGAINST</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="res2"
+                              id="res2_abstain"
+                            /><label class="form-check-label" for="res2_abstain"
+                              >ABSTAIN</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="dash-btn-primary">
+                      <i class="fa-solid fa-signature"></i> Cast Proxy Votes
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Footer -->
+        <footer
+          class="p-3 text-center border-top bg-white"
+          style="font-size: 0.82rem; color: #64748b"
+        >
+          &copy; 2026 Stackly Corporate Advisory. All Rights Reserved.
+          Confidential Enterprise Portal.
+        </footer>
+      </main>
+    </div>
+
+    <!-- Interactive Consultation Booking Modal -->
+    <div class="modal fade" id="consultModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="fa-solid fa-calendar-plus text-warning me-2"></i>
+              Request Priority Advisory Sync
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: 0.85rem; color: #64748b">
+              Directly connect with your assigned Senior Strategy Partner within
+              4 business hours.
+            </p>
+            <div class="mb-3">
+              <label class="form-label fw-bold" style="font-size: 0.82rem"
+                >Advisory Subject</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="e.g., M&A Valuation Review"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold" style="font-size: 0.82rem"
+                >Urgency Level</label
+              >
+              <select class="form-select">
+                <option>High Priority (Within 4 Hours)</option>
+                <option>Standard Review (Next 24 Hours)</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="dash-btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="dash-btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Send Request
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dedicated Dashboard JavaScript (Requirement 2, 3, 5, 7) -->
+    <script src="../assets/js/dashboard.js"></script>
+  </body>
+</html>

@@ -46,6 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
       "success",
     );
     sessionStorage.removeItem("stackly_registered_msg");
+
+    const preEmail = sessionStorage.getItem("stackly_reg_email");
+    const preRole = sessionStorage.getItem("stackly_reg_role");
+    if (preEmail && document.getElementById("loginEmail")) {
+      document.getElementById("loginEmail").value = preEmail;
+    }
+    if (preRole && document.getElementById("loginRole")) {
+      document.getElementById("loginRole").value = preRole;
+    }
   }
 
   // -------------------------------------------------------------
@@ -533,11 +542,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       setTimeout(() => {
-        // Store message for login page
+        // Store message and registered data for login page
         sessionStorage.setItem(
           "stackly_registered_msg",
           `Account for ${username} created successfully! Please sign in with your credentials.`,
         );
+        sessionStorage.setItem("stackly_reg_username", username);
+        sessionStorage.setItem("stackly_reg_email", email);
+        sessionStorage.setItem("stackly_reg_role", role);
 
         showToast(
           "Account Created",
@@ -613,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Process Login
+      // Process Login & Store Session Data
       const submitBtn = loginForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.innerHTML : "";
 
@@ -623,17 +635,30 @@ document.addEventListener("DOMContentLoaded", () => {
           '<i class="fa-solid fa-spinner fa-spin me-2"></i> Authenticating...';
       }
 
+      // Save user session for the dashboard (Requirement 2 & 3)
+      const loginTimestamp = new Date().toLocaleString();
+      sessionStorage.setItem("stackly_auth_role", role);
+      sessionStorage.setItem("stackly_auth_email", email);
+      sessionStorage.setItem("stackly_auth_logged_in", "true");
+      sessionStorage.setItem("stackly_auth_login_time", loginTimestamp);
+
+      if (remember) {
+        localStorage.setItem("stackly_auth_role", role);
+        localStorage.setItem("stackly_auth_email", email);
+        localStorage.setItem("stackly_auth_login_time", loginTimestamp);
+      }
+
       setTimeout(() => {
         showToast(
           "Authentication Successful",
-          `Welcome back! Accessing Stackly Corporate Portal as ${role.toUpperCase()}...`,
+          `Welcome back! Launching Stackly Corporate Dashboard for ${role.toUpperCase()}...`,
           "success",
         );
 
         setTimeout(() => {
-          window.location.href = "../index.html";
-        }, 1400);
-      }, 1000);
+          window.location.href = "dashboard.html";
+        }, 1200);
+      }, 900);
     });
   }
 
