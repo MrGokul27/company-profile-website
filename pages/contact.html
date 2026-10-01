@@ -153,7 +153,9 @@
               <form id="contactForm" class="ajax-contact-form">
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label class="form-label">Full Name *</label>
+                    <label class="form-label" for="contactUsername"
+                      >Full Name *</label
+                    >
                     <input
                       type="text"
                       id="contactUsername"
@@ -161,22 +163,28 @@
                       class="form-control"
                       maxlength="16"
                       placeholder="e.g. Johnathan Hayes"
+                      autocomplete="name"
                       required
                     />
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Corporate Email Address *</label>
+                    <label class="form-label" for="contactEmail"
+                      >Corporate Email Address *</label
+                    >
                     <input
                       type="email"
                       id="contactEmail"
                       name="email"
                       class="form-control"
                       placeholder="e.g. j.hayes@company.com"
+                      autocomplete="email"
                       required
                     />
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Direct Phone Number *</label>
+                    <label class="form-label" for="contactPhone"
+                      >Direct Phone Number *</label
+                    >
                     <input
                       type="tel"
                       id="contactPhone"
@@ -185,11 +193,12 @@
                       placeholder="e.g. 9876543210"
                       minlength="10"
                       maxlength="10"
+                      autocomplete="tel"
                       required
                     />
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label"
+                    <label class="form-label" for="contactOrg"
                       >Organization / Entity Name *</label
                     >
                     <input
@@ -198,11 +207,14 @@
                       name="organization"
                       class="form-control"
                       placeholder="e.g. Vanguard Group Ltd"
+                      autocomplete="organization"
                       required
                     />
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Primary Practice Area *</label>
+                    <label class="form-label" for="contactPractice"
+                      >Primary Practice Area *</label
+                    >
                     <select
                       class="form-select"
                       id="contactPractice"
@@ -233,7 +245,7 @@
                     </select>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label"
+                    <label class="form-label" for="contactHorizon"
                       >Anticipated Project Horizon *</label
                     >
                     <select
@@ -255,7 +267,7 @@
                     </select>
                   </div>
                   <div class="col-12">
-                    <label class="form-label"
+                    <label class="form-label" for="contactMessage"
                       >Engagement Scope & Core Objectives *</label
                     >
                     <textarea

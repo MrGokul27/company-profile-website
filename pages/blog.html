@@ -286,8 +286,15 @@
             <!-- Search Widget -->
             <div class="sidebar-widget">
               <h4 class="sidebar-widget-title">Search Research</h4>
-              <form class="sidebar-search-form">
-                <input type="text" placeholder="Search keywords..." />
+              <form class="sidebar-search-form" role="search">
+                <input
+                  type="text"
+                  id="sidebarSearchInput"
+                  name="search"
+                  placeholder="Search keywords..."
+                  autocomplete="off"
+                  aria-label="Search keywords"
+                />
                 <button type="submit">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -763,8 +770,12 @@
                     <i class="fa-regular fa-envelope newsletter-input-icon"></i>
                     <input
                       type="email"
+                      id="executiveNewsletterEmail"
+                      name="email"
                       class="newsletter-input"
                       placeholder="Enter your corporate email address..."
+                      autocomplete="email"
+                      aria-label="Corporate email address"
                       required
                     />
                   </div>

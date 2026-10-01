@@ -355,7 +355,10 @@
                 type="text"
                 class="topbar-search-input"
                 id="globalSearchInput"
+                name="globalSearch"
                 placeholder="Search metrics, reports, clients, deliverables..."
+                autocomplete="off"
+                aria-label="Search metrics, reports, clients, deliverables"
               />
             </div>
           </div>
@@ -1083,10 +1086,16 @@
                         <div class="mb-3">
                           <label
                             class="form-label fw-semibold"
+                            for="consultPractice"
                             style="font-size: 0.85rem"
                             >Advisory Practice Focus</label
                           >
-                          <select class="form-select" required>
+                          <select
+                            class="form-select"
+                            id="consultPractice"
+                            name="practice"
+                            required
+                          >
                             <option value="ma">
                               Mergers & Acquisitions Structuring
                             </option>
@@ -1104,10 +1113,16 @@
                         <div class="mb-3">
                           <label
                             class="form-label fw-semibold"
+                            for="consultPartner"
                             style="font-size: 0.85rem"
                             >Select Managing Partner</label
                           >
-                          <select class="form-select" required>
+                          <select
+                            class="form-select"
+                            id="consultPartner"
+                            name="partner"
+                            required
+                          >
                             <option value="vance">
                               Alexander Vance (Senior Partner - M&A)
                             </option>
@@ -1123,12 +1138,15 @@
                           <div class="col-6">
                             <label
                               class="form-label fw-semibold"
+                              for="consultDate"
                               style="font-size: 0.85rem"
                               >Preferred Date</label
                             >
                             <input
                               type="date"
                               class="form-control"
+                              id="consultDate"
+                              name="consultationDate"
                               value="2026-10-15"
                               required
                             />
@@ -1136,10 +1154,16 @@
                           <div class="col-6">
                             <label
                               class="form-label fw-semibold"
+                              for="consultTimeSlot"
                               style="font-size: 0.85rem"
                               >Time Slot (GMT)</label
                             >
-                            <select class="form-select" required>
+                            <select
+                              class="form-select"
+                              id="consultTimeSlot"
+                              name="timeSlot"
+                              required
+                            >
                               <option>10:00 AM - 11:30 AM</option>
                               <option>02:00 PM - 03:30 PM</option>
                               <option>04:30 PM - 06:00 PM</option>
@@ -1149,11 +1173,14 @@
                         <div class="mb-3">
                           <label
                             class="form-label fw-semibold"
+                            for="consultObjectives"
                             style="font-size: 0.85rem"
                             >Key Executive Objectives</label
                           >
                           <textarea
                             class="form-control"
+                            id="consultObjectives"
+                            name="objectives"
                             rows="3"
                             placeholder="Outline agenda items or transactions to discuss..."
                           ></textarea>
@@ -1270,11 +1297,18 @@
                   </h5>
                   <form id="feedbackForm">
                     <div class="mb-3">
-                      <label class="form-label" style="font-size: 0.85rem"
+                      <label
+                        class="form-label"
+                        for="feedbackSatisfaction"
+                        style="font-size: 0.85rem"
                         >How satisfied are you with our strategic
                         deliverables?</label
                       >
-                      <select class="form-select">
+                      <select
+                        class="form-select"
+                        id="feedbackSatisfaction"
+                        name="satisfaction"
+                      >
                         <option>
                           Exceptional - Exceeded Strategic Targets (5/5)
                         </option>
@@ -1283,11 +1317,16 @@
                       </select>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" style="font-size: 0.85rem"
+                      <label
+                        class="form-label"
+                        for="feedbackNotes"
+                        style="font-size: 0.85rem"
                         >Specific Feedback or Partner Commendation</label
                       >
                       <textarea
                         class="form-control"
+                        id="feedbackNotes"
+                        name="notes"
                         rows="3"
                         placeholder="Provide notes on team collaboration, analytics quality..."
                       ></textarea>
@@ -1633,10 +1672,15 @@
                       <div class="col-md-3">
                         <label
                           class="form-label fw-bold"
+                          for="timesheetChargeCode"
                           style="font-size: 0.8rem"
                           >Charge Code</label
                         >
-                        <select class="form-select">
+                        <select
+                          class="form-select"
+                          id="timesheetChargeCode"
+                          name="chargeCode"
+                        >
                           <option>#STK-904 (Apex M&A)</option>
                           <option>#STK-842 (Sovereign ESG)</option>
                           <option>#STK-730 (Vanguard Tech)</option>
@@ -1645,26 +1689,33 @@
                       <div class="col-md-3">
                         <label
                           class="form-label fw-bold"
+                          for="timesheetDate"
                           style="font-size: 0.8rem"
                           >Date of Service</label
                         >
                         <input
                           type="date"
                           class="form-control"
+                          id="timesheetDate"
+                          name="serviceDate"
                           value="2026-10-01"
                         />
                       </div>
                       <div class="col-md-2">
                         <label
                           class="form-label fw-bold"
+                          for="timesheetHours"
                           style="font-size: 0.8rem"
                           >Hours</label
                         >
                         <input
                           type="number"
                           class="form-control"
+                          id="timesheetHours"
+                          name="hours"
                           value="6.5"
                           step="0.5"
+                          min="0.5"
                         />
                       </div>
                       <div class="col-md-4 d-flex align-items-end">
@@ -2829,6 +2880,7 @@
                               type="radio"
                               name="res1"
                               id="res1_for"
+                              value="for"
                               checked
                             /><label class="form-check-label" for="res1_for"
                               >FOR</label
@@ -2840,6 +2892,7 @@
                               type="radio"
                               name="res1"
                               id="res1_against"
+                              value="against"
                             /><label class="form-check-label" for="res1_against"
                               >AGAINST</label
                             >
@@ -2850,6 +2903,7 @@
                               type="radio"
                               name="res1"
                               id="res1_abstain"
+                              value="abstain"
                             /><label class="form-check-label" for="res1_abstain"
                               >ABSTAIN</label
                             >
@@ -2873,6 +2927,7 @@
                               type="radio"
                               name="res2"
                               id="res2_for"
+                              value="for"
                               checked
                             /><label class="form-check-label" for="res2_for"
                               >FOR</label
@@ -2884,6 +2939,7 @@
                               type="radio"
                               name="res2"
                               id="res2_against"
+                              value="against"
                             /><label class="form-check-label" for="res2_against"
                               >AGAINST</label
                             >
@@ -2894,6 +2950,7 @@
                               type="radio"
                               name="res2"
                               id="res2_abstain"
+                              value="abstain"
                             /><label class="form-check-label" for="res2_abstain"
                               >ABSTAIN</label
                             >
@@ -2944,20 +3001,33 @@
               4 business hours.
             </p>
             <div class="mb-3">
-              <label class="form-label fw-bold" style="font-size: 0.82rem"
+              <label
+                class="form-label fw-bold"
+                for="modalConsultSubject"
+                style="font-size: 0.82rem"
                 >Advisory Subject</label
               >
               <input
                 type="text"
                 class="form-control"
+                id="modalConsultSubject"
+                name="subject"
                 placeholder="e.g., M&A Valuation Review"
+                autocomplete="off"
               />
             </div>
             <div class="mb-3">
-              <label class="form-label fw-bold" style="font-size: 0.82rem"
+              <label
+                class="form-label fw-bold"
+                for="modalConsultUrgency"
+                style="font-size: 0.82rem"
                 >Urgency Level</label
               >
-              <select class="form-select">
+              <select
+                class="form-select"
+                id="modalConsultUrgency"
+                name="urgency"
+              >
                 <option>High Priority (Within 4 Hours)</option>
                 <option>Standard Review (Next 24 Hours)</option>
               </select>
