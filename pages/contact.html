@@ -156,7 +156,10 @@
                     <label class="form-label">Full Name *</label>
                     <input
                       type="text"
+                      id="contactUsername"
+                      name="name"
                       class="form-control"
+                      maxlength="16"
                       placeholder="e.g. Johnathan Hayes"
                       required
                     />
@@ -165,6 +168,8 @@
                     <label class="form-label">Corporate Email Address *</label>
                     <input
                       type="email"
+                      id="contactEmail"
+                      name="email"
                       class="form-control"
                       placeholder="e.g. j.hayes@company.com"
                       required
@@ -174,8 +179,12 @@
                     <label class="form-label">Direct Phone Number *</label>
                     <input
                       type="tel"
+                      id="contactPhone"
+                      name="phone"
                       class="form-control"
-                      placeholder="+91 9876543210"
+                      placeholder="e.g. 9876543210"
+                      minlength="10"
+                      maxlength="10"
                       required
                     />
                   </div>
@@ -185,6 +194,8 @@
                     >
                     <input
                       type="text"
+                      id="contactOrg"
+                      name="organization"
                       class="form-control"
                       placeholder="e.g. Vanguard Group Ltd"
                       required
@@ -192,7 +203,12 @@
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Primary Practice Area *</label>
-                    <select class="form-select" required>
+                    <select
+                      class="form-select"
+                      id="contactPractice"
+                      name="practice"
+                      required
+                    >
                       <option value="" selected disabled>
                         Select Consulting Practice
                       </option>
@@ -218,9 +234,17 @@
                   </div>
                   <div class="col-md-6">
                     <label class="form-label"
-                      >Anticipated Project Horizon</label
+                      >Anticipated Project Horizon *</label
                     >
-                    <select class="form-select">
+                    <select
+                      class="form-select"
+                      id="contactHorizon"
+                      name="horizon"
+                      required
+                    >
+                      <option value="" selected disabled>
+                        Select Project Horizon
+                      </option>
                       <option value="immediate">
                         Immediate (Within 30 Days)
                       </option>
@@ -236,6 +260,8 @@
                     >
                     <textarea
                       class="form-control"
+                      id="contactMessage"
+                      name="message"
                       rows="4"
                       placeholder="Briefly summarize your target objectives, current organizational friction points, and desired outcomes..."
                       required
@@ -247,6 +273,8 @@
                         class="form-check-input"
                         type="checkbox"
                         id="ndaCheck"
+                        name="nda"
+                        required
                         checked
                       />
                       <label
@@ -254,7 +282,7 @@
                         for="ndaCheck"
                       >
                         Request an automated mutual Non-Disclosure Agreement
-                        (NDA) prior to preliminary briefing.
+                        (NDA) prior to preliminary briefing. *
                       </label>
                     </div>
                     <button type="submit" class="theme-btn w-100 py-3">

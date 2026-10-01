@@ -222,38 +222,168 @@ function initPortfolioFilter() {
   });
 }
 
-// Form Submission Handlers
+// Form Submission Handlers & Input Restrictions
 function initForms() {
-  const contactForms = document.querySelectorAll(
-    ".ajax-contact-form, #contactForm, .newsletter-form",
+  const isRoot = !window.location.pathname
+    .replace(/\\/g, "/")
+    .includes("/pages/");
+  const notFoundPage = isRoot ? "404.html" : "../404.html";
+
+  // 1. Contact Form (Confidential Inquiry Form on Contact Page)
+  const contactForm =
+    document.getElementById("contactForm") ||
+    document.querySelector(".ajax-contact-form");
+  if (contactForm && !contactForm.dataset.listenerAttached) {
+    contactForm.dataset.listenerAttached = "true";
+
+    const nameInput =
+      document.getElementById("contactUsername") ||
+      contactForm.querySelector("#contactUsername") ||
+      contactForm.querySelector('input[name="name"]') ||
+      contactForm.querySelector('input[type="text"]');
+
+    const phoneInput =
+      document.getElementById("contactPhone") ||
+      contactForm.querySelector("#contactPhone") ||
+      contactForm.querySelector('input[name="phone"]') ||
+      contactForm.querySelector('input[type="tel"]');
+
+    // Username / Full Name field: Prevent typing numbers or special characters (only allow letters & spaces)
+    if (nameInput) {
+      const allowedNavKeys = [
+        "Backspace",
+        "Tab",
+        "Enter",
+        "Delete",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+        "Escape",
+        "Shift",
+        "CapsLock",
+      ];
+
+      nameInput.addEventListener("keydown", (e) => {
+        if (
+          allowedNavKeys.includes(e.key) ||
+          e.ctrlKey ||
+          e.metaKey ||
+          e.altKey
+        ) {
+          return;
+        }
+        // Block numbers and special characters immediately
+        if (!/^[a-zA-Z\s]$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      nameInput.addEventListener("beforeinput", (e) => {
+        if (e.data && /[^a-zA-Z\s]/.test(e.data)) {
+          e.preventDefault();
+        }
+      });
+
+      nameInput.addEventListener("input", function () {
+        const sanitized = this.value.replace(/[^a-zA-Z\s]/g, "");
+        if (this.value !== sanitized) {
+          this.value = sanitized;
+        }
+      });
+    }
+
+    // Direct Phone Number / Number field: Prevent typing alphabets or special characters (only allow digits 0-9)
+    if (phoneInput) {
+      const allowedNavKeys = [
+        "Backspace",
+        "Tab",
+        "Enter",
+        "Delete",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+        "Escape",
+        "Shift",
+      ];
+
+      phoneInput.addEventListener("keydown", (e) => {
+        if (
+          allowedNavKeys.includes(e.key) ||
+          e.ctrlKey ||
+          e.metaKey ||
+          e.altKey
+        ) {
+          return;
+        }
+        // Block alphabets, special characters, and spaces immediately
+        if (!/^[0-9]$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      phoneInput.addEventListener("beforeinput", (e) => {
+        if (e.data && /[^0-9]/.test(e.data)) {
+          e.preventDefault();
+        }
+      });
+
+      phoneInput.addEventListener("input", function () {
+        const sanitized = this.value.replace(/[^0-9]/g, "");
+        if (this.value !== sanitized) {
+          this.value = sanitized;
+        }
+      });
+    }
+
+    // Contact Form Submission -> Redirect to 404 Page
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin me-2"></i> Submitting...';
+      }
+      setTimeout(() => {
+        window.location.href = notFoundPage;
+      }, 400);
+    });
+  }
+
+  // 2. Footer Subscribe Form & Blog Executive Newsletter Form
+  const newsletterForms = document.querySelectorAll(
+    "#footerNewsletterForm, #executiveNewsletterForm, .newsletter-form, .newsletter-form-container, .footer-newsletter form",
   );
 
-  contactForms.forEach((form) => {
-    // Avoid double attaching listeners
+  newsletterForms.forEach((form) => {
     if (form.dataset.listenerAttached) return;
     form.dataset.listenerAttached = "true";
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn ? submitBtn.innerHTML : "";
-
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML =
-          '<i class="fa-solid fa-spinner fa-spin me-2"></i> Sending...';
+          '<i class="fa-solid fa-spinner fa-spin me-2"></i> Subscribing...';
       }
-
       setTimeout(() => {
-        alert(
-          "Thank you! Your message has been received successfully. Our corporate advisory team will contact you shortly.",
-        );
-        form.reset();
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-        }
-      }, 1200);
+        window.location.href = notFoundPage;
+      }, 400);
     });
   });
 }
