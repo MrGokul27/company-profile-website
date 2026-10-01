@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise Portal Login - Stackly Corporate Profile</title>
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Theme Base & Dedicated Auth CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-page-body">
+    <!-- Top Auth Navigation with Back to Home -->
+    <nav class="auth-top-nav">
+      <div class="container nav-container">
+        <!-- Brand Logo -->
+        <a
+          href="../index.html"
+          class="auth-brand-logo"
+          title="Stackly Corporate Home"
+        >
+          <img
+            src="../assets/images/logoStackly.webp"
+            alt="Stackly Corporate Logo"
+          />
+        </a>
+
+        <!-- Back to Home Action Button (Requirement 9) -->
+        <div class="auth-nav-actions">
+          <a href="../index.html" class="back-home-btn" id="backToHomeTop">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Auth Content Area -->
+    <main class="auth-main-wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-11">
+            <div class="auth-card-container">
+              <div class="row g-0">
+                <!-- Left Visual & Brand Overview Column -->
+                <div class="col-lg-5 d-none d-lg-flex">
+                  <div class="auth-brand-side">
+                    <div>
+                      <div class="brand-badge">
+                        <i class="fa-solid fa-shield-halved"></i> Enterprise
+                        Portal
+                      </div>
+                      <h2>
+                        Strategic Access for <span>Global Visionaries</span>
+                      </h2>
+                      <p>
+                        Welcome to the Stackly Corporate Gateway. Access your
+                        confidential advisory dashboards, portfolio analytics,
+                        and private executive channels.
+                      </p>
+
+                      <!-- Key Value Pillars -->
+                      <div class="auth-feature-list">
+                        <div class="auth-feature-item">
+                          <div class="auth-feature-icon">
+                            <i class="fa-solid fa-lock"></i>
+                          </div>
+                          <div class="auth-feature-text">
+                            <h5>256-Bit SSL Encryption</h5>
+                            <span
+                              >Military-grade data protection & privacy</span
+                            >
+                          </div>
+                        </div>
+
+                        <div class="auth-feature-item">
+                          <div class="auth-feature-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                          </div>
+                          <div class="auth-feature-text">
+                            <h5>Real-time Strategy Metrics</h5>
+                            <span
+                              >Direct access to engagement deliverables</span
+                            >
+                          </div>
+                        </div>
+
+                        <div class="auth-feature-item">
+                          <div class="auth-feature-icon">
+                            <i class="fa-solid fa-headset"></i>
+                          </div>
+                          <div class="auth-feature-text">
+                            <h5>Dedicated Advisory Desk</h5>
+                            <span>24/7 priority executive assistance</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Client Trust Endorsement -->
+                    <div class="auth-quote-card">
+                      <p>
+                        "Stackly's advisory intelligence helped scale our global
+                        operations with unmatched precision and speed."
+                      </p>
+                      <div class="auth-quote-author">
+                        <img
+                          src="../assets/images/home/home-team-avatar-1.webp"
+                          alt="Executive Partner"
+                          class="auth-quote-avatar"
+                        />
+                        <div class="auth-quote-info">
+                          <h6>Victoria Stirling</h6>
+                          <span>Managing Director, Apex Capital</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Interactive Form Column -->
+                <div class="col-lg-7">
+                  <div class="auth-form-side">
+                    <!-- Switch Tabs: Sign In / Register -->
+                    <div class="auth-tabs-nav">
+                      <a href="login.html" class="auth-tab-link active">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <span>Sign In</span>
+                      </a>
+                      <a href="register.html" class="auth-tab-link">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Register</span>
+                      </a>
+                    </div>
+
+                    <!-- Form Header -->
+                    <div class="auth-form-header">
+                      <span class="auth-subtitle">Secure Access Portal</span>
+                      <h3>Sign In to Account</h3>
+                      <p>
+                        Enter your enterprise credentials to access your portal
+                      </p>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="loginForm" novalidate>
+                      <!-- Field 1: Role Selection (Requirement 2 & 4) -->
+                      <div class="auth-form-group">
+                        <label for="loginRole" class="auth-label">
+                          Select Role <span class="required-star">*</span>
+                        </label>
+                        <div class="auth-input-wrapper">
+                          <i
+                            class="fa-solid fa-user-shield auth-input-icon"
+                          ></i>
+                          <select
+                            class="auth-form-select"
+                            id="loginRole"
+                            name="role"
+                            required
+                          >
+                            <option value="" disabled selected>
+                              Select Your Access Role
+                            </option>
+                            <option value="client">
+                              Client / Corporate Partner
+                            </option>
+                            <option value="consultant">
+                              Senior Consultant / Advisor
+                            </option>
+                            <option value="executive">
+                              Enterprise Executive / C-Suite
+                            </option>
+                            <option value="stakeholder">
+                              Board Member / Stakeholder
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- Field 2: Email Address (Requirement 2 & 4) -->
+                      <div class="auth-form-group">
+                        <label for="loginEmail" class="auth-label">
+                          Corporate Email <span class="required-star">*</span>
+                        </label>
+                        <div class="auth-input-wrapper">
+                          <i class="fa-solid fa-envelope auth-input-icon"></i>
+                          <input
+                            type="email"
+                            class="auth-form-control"
+                            id="loginEmail"
+                            name="email"
+                            placeholder="executive@company.com"
+                            autocomplete="email"
+                            required
+                          />
+                        </div>
+                        <div
+                          id="loginEmailFeedback"
+                          class="field-feedback"
+                        ></div>
+                      </div>
+
+                      <!-- Field 3: Password with Weak Password Validation (Requirements 2, 4, 6) -->
+                      <div class="auth-form-group">
+                        <div class="auth-label">
+                          <label for="loginPassword">
+                            Password <span class="required-star">*</span>
+                          </label>
+                          <a
+                            href="#"
+                            class="text-decoration-none"
+                            style="font-size: 0.82rem; color: var(--theme)"
+                            onclick="
+                              alert(
+                                'Password reset link has been dispatched to your corporate email.',
+                              );
+                              return false;
+                            "
+                          >
+                            Forgot Password?
+                          </a>
+                        </div>
+                        <div class="auth-input-wrapper">
+                          <i class="fa-solid fa-key auth-input-icon"></i>
+                          <input
+                            type="password"
+                            class="auth-form-control"
+                            id="loginPassword"
+                            name="password"
+                            placeholder="Enter your secure password"
+                            autocomplete="current-password"
+                            required
+                          />
+                          <button
+                            type="button"
+                            class="password-toggle-btn"
+                            data-target="loginPassword"
+                            aria-label="Toggle password visibility"
+                          >
+                            <i class="fa-regular fa-eye"></i>
+                          </button>
+                        </div>
+                        <div
+                          id="loginPasswordFeedback"
+                          class="field-feedback"
+                        ></div>
+                      </div>
+
+                      <!-- Field 4: Remember Me Checkbox (Requirements 2 & 4) -->
+                      <div class="auth-checkbox-group">
+                        <input
+                          type="checkbox"
+                          class="auth-check-input"
+                          id="loginRemember"
+                          name="rememberMe"
+                          required
+                        />
+                        <label for="loginRemember" class="auth-check-label">
+                          Remember my device session (Required for secure token
+                          caching)
+                          <span class="required-star">*</span>
+                        </label>
+                      </div>
+
+                      <!-- Submit Button -->
+                      <button type="submit" class="auth-submit-btn">
+                        <span>Sign In to Portal</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </form>
+
+                    <!-- Switch to Register Alternative -->
+                    <div class="auth-form-footer">
+                      <p>
+                        New to Stackly Corporate?
+                        <a href="register.html">Create an Account</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Page Bottom Secondary Back Link & Security Badge -->
+            <div
+              class="text-center mt-4 d-flex justify-content-center align-items-center gap-4 flex-wrap"
+            >
+              <a
+                href="../index.html"
+                class="back-home-btn"
+                style="background: rgba(255, 255, 255, 0.03)"
+              >
+                <i class="fa-solid fa-house"></i>
+                <span>Return to Home Page</span>
+              </a>
+              <span
+                style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.45)"
+              >
+                <i class="fa-solid fa-lock text-warning me-1"></i> End-to-End
+                Enterprise Encryption
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Simple Page Footer -->
+    <footer class="auth-page-footer">
+      <div class="container">
+        <p class="m-0">
+          &copy; 2026 Stackly Corporate Profile. All Rights Reserved. Strategic
+          Business Advisory.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dedicated Auth JavaScript -->
+    <script src="../assets/js/auth.js"></script>
+  </body>
+</html>

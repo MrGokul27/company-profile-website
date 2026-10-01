@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise Account Registration - Stackly Corporate Profile</title>
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Theme Base & Dedicated Auth CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body class="auth-page-body">
+    <!-- Top Auth Navigation with Back to Home -->
+    <nav class="auth-top-nav">
+      <div class="container nav-container">
+        <!-- Brand Logo -->
+        <a
+          href="../index.html"
+          class="auth-brand-logo"
+          title="Stackly Corporate Home"
+        >
+          <img
+            src="../assets/images/logoStackly.webp"
+            alt="Stackly Corporate Logo"
+          />
+        </a>
+
+        <!-- Back to Home Action Button (Requirement 9) -->
+        <div class="auth-nav-actions">
+          <a href="../index.html" class="back-home-btn" id="backToHomeTop">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Home</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Auth Content Area -->
+    <main class="auth-main-wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-11 col-lg-12">
+            <div class="auth-card-container">
+              <div class="row g-0">
+                <!-- Left Visual & Value Proposition Column -->
+                <div class="col-lg-5 d-none d-lg-flex">
+                  <div class="auth-brand-side">
+                    <div>
+                      <div class="brand-badge">
+                        <i class="fa-solid fa-building-columns"></i> Executive
+                        Network
+                      </div>
+                      <h2>
+                        Join the World's <span>Elite Advisory</span> Ecosystem
+                      </h2>
+                      <p>
+                        Register your corporate credentials to collaborate
+                        directly with industry leaders, unlock proprietary
+                        market research, and accelerate enterprise valuation.
+                      </p>
+
+                      <!-- Key Feature Pillars -->
+                      <div class="auth-feature-list">
+                        <div class="auth-feature-item">
+                          <div class="auth-feature-icon">
+                            <i class="fa-solid fa-chart-pie"></i>
+                          </div>
+                          <div class="auth-feature-text">
+                            <h5>Confidential Advisory Analytics</h5>
+                            <span
+                              >Tailored quarterly intelligence briefings</span
+                            >
+                          </div>
+                        </div>
+
+                        <div class="auth-feature-item">
+                          <div class="auth-feature-icon">
+                            <i class="fa-solid fa-globe"></i>
+                          </div>
+                          <div class="auth-feature-text">
+                            <h5>Global Partner Network</h5>
+                            <span
+                              >Direct collaboration across 45+ Tier-1
+                              economies</span
+                            >
+                          </div>
+                        </div>
+
+                        <div class="auth-feature-item">
+                          <div class="auth-feature-icon">
+                            <i class="fa-solid fa-id-badge"></i>
+                          </div>
+                          <div class="auth-feature-text">
+                            <h5>Strict Corporate Vetting</h5>
+                            <span
+                              >Verified leadership credentialing process</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Client Trust Endorsement -->
+                    <div class="auth-quote-card">
+                      <p>
+                        "The Stackly portal provides our executive board with
+                        instant clarity, seamless oversight, and transformative
+                        solutions."
+                      </p>
+                      <div class="auth-quote-author">
+                        <img
+                          src="../assets/images/home/home-team-avatar-2.webp"
+                          alt="Executive Member"
+                          class="auth-quote-avatar"
+                        />
+                        <div class="auth-quote-info">
+                          <h6>Alexander Vance</h6>
+                          <span>Senior Partner, Vance & Sterling Advisory</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Interactive Form Column -->
+                <div class="col-lg-7">
+                  <div class="auth-form-side">
+                    <!-- Switch Tabs: Sign In / Register -->
+                    <div class="auth-tabs-nav">
+                      <a href="login.html" class="auth-tab-link">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        <span>Sign In</span>
+                      </a>
+                      <a href="register.html" class="auth-tab-link active">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Register</span>
+                      </a>
+                    </div>
+
+                    <!-- Form Header -->
+                    <div class="auth-form-header">
+                      <span class="auth-subtitle">New Member Registration</span>
+                      <h3>Create Enterprise Account</h3>
+                      <p>
+                        Complete all fields below to request portal
+                        authorization
+                      </p>
+                    </div>
+
+                    <!-- Register Form (Requirements 3, 4, 5, 6, 7, 8) -->
+                    <form id="registerForm" novalidate>
+                      <div class="row">
+                        <!-- Field 1: Username (Requirements 3, 4, 7 - No numbers, special chars, or spaces allowed) -->
+                        <div class="col-md-6">
+                          <div class="auth-form-group">
+                            <label for="regUsername" class="auth-label">
+                              <span
+                                >Username
+                                <span class="required-star">*</span></span
+                              >
+                              <span
+                                style="font-size: 0.72rem; color: var(--theme)"
+                                >Letters Only</span
+                              >
+                            </label>
+                            <div class="auth-input-wrapper">
+                              <i class="fa-solid fa-user auth-input-icon"></i>
+                              <input
+                                type="text"
+                                class="auth-form-control"
+                                id="regUsername"
+                                name="username"
+                                placeholder="Username (letters only)"
+                                autocomplete="username"
+                                required
+                              />
+                            </div>
+                            <div
+                              id="usernameFeedback"
+                              class="field-feedback"
+                            ></div>
+                          </div>
+                        </div>
+
+                        <!-- Field 2: Role Selection (Requirements 3 & 4) -->
+                        <div class="col-md-6">
+                          <div class="auth-form-group">
+                            <label for="regRole" class="auth-label">
+                              Enterprise Role
+                              <span class="required-star">*</span>
+                            </label>
+                            <div class="auth-input-wrapper">
+                              <i
+                                class="fa-solid fa-user-shield auth-input-icon"
+                              ></i>
+                              <select
+                                class="auth-form-select"
+                                id="regRole"
+                                name="role"
+                                required
+                              >
+                                <option value="" disabled selected>
+                                  Select Your Role
+                                </option>
+                                <option value="client">
+                                  Client / Corporate Partner
+                                </option>
+                                <option value="consultant">
+                                  Senior Consultant / Advisor
+                                </option>
+                                <option value="executive">
+                                  Enterprise Executive / C-Suite
+                                </option>
+                                <option value="stakeholder">
+                                  Board Member / Stakeholder
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Field 3: Email Address (Requirements 3 & 4) -->
+                      <div class="auth-form-group">
+                        <label for="regEmail" class="auth-label">
+                          Corporate Email <span class="required-star">*</span>
+                        </label>
+                        <div class="auth-input-wrapper">
+                          <i class="fa-solid fa-envelope auth-input-icon"></i>
+                          <input
+                            type="email"
+                            class="auth-form-control"
+                            id="regEmail"
+                            name="email"
+                            placeholder="executive.name@company.com"
+                            autocomplete="email"
+                            required
+                          />
+                        </div>
+                        <div id="regEmailFeedback" class="field-feedback"></div>
+                      </div>
+
+                      <div class="row">
+                        <!-- Field 4: Password with Weak Password Validation (Requirements 3, 4, 6) -->
+                        <div class="col-md-6">
+                          <div class="auth-form-group">
+                            <label for="regPassword" class="auth-label">
+                              Password <span class="required-star">*</span>
+                            </label>
+                            <div class="auth-input-wrapper">
+                              <i class="fa-solid fa-lock auth-input-icon"></i>
+                              <input
+                                type="password"
+                                class="auth-form-control"
+                                id="regPassword"
+                                name="password"
+                                placeholder="Create strong password"
+                                autocomplete="new-password"
+                                required
+                              />
+                              <button
+                                type="button"
+                                class="password-toggle-btn"
+                                data-target="regPassword"
+                                aria-label="Toggle password visibility"
+                              >
+                                <i class="fa-regular fa-eye"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Field 5: Confirm Password with Match Checking (Requirements 3, 4, 5) -->
+                        <div class="col-md-6">
+                          <div class="auth-form-group">
+                            <label for="regConfirmPassword" class="auth-label">
+                              Confirm Password
+                              <span class="required-star">*</span>
+                            </label>
+                            <div class="auth-input-wrapper">
+                              <i
+                                class="fa-solid fa-shield-check auth-input-icon"
+                              ></i>
+                              <input
+                                type="password"
+                                class="auth-form-control"
+                                id="regConfirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter password"
+                                autocomplete="new-password"
+                                required
+                              />
+                              <button
+                                type="button"
+                                class="password-toggle-btn"
+                                data-target="regConfirmPassword"
+                                aria-label="Toggle confirm password visibility"
+                              >
+                                <i class="fa-regular fa-eye"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Password Match Feedback -->
+                      <div
+                        id="confirmPasswordFeedback"
+                        class="field-feedback mb-2"
+                      ></div>
+
+                      <!-- Password Strength Live Indicator (Requirement 6) -->
+                      <div
+                        class="password-strength-container mb-3"
+                        id="regStrengthContainer"
+                      >
+                        <div class="strength-meter-header">
+                          <span class="strength-label">Security Strength:</span>
+                          <span class="strength-badge">Strength</span>
+                        </div>
+                        <div class="strength-progress-bars">
+                          <div class="strength-segment"></div>
+                          <div class="strength-segment"></div>
+                          <div class="strength-segment"></div>
+                          <div class="strength-segment"></div>
+                        </div>
+                        <ul class="password-criteria-list">
+                          <li class="password-criteria-item" data-crit="length">
+                            <i class="fa-regular fa-circle"></i> Minimum 8
+                            characters
+                          </li>
+                          <li class="password-criteria-item" data-crit="cases">
+                            <i class="fa-regular fa-circle"></i> Upper &
+                            Lowercase letters
+                          </li>
+                          <li class="password-criteria-item" data-crit="number">
+                            <i class="fa-regular fa-circle"></i> At least 1
+                            number
+                          </li>
+                          <li
+                            class="password-criteria-item"
+                            data-crit="special"
+                          >
+                            <i class="fa-regular fa-circle"></i> At least 1
+                            symbol (@#$%)
+                          </li>
+                        </ul>
+                        <div
+                          id="regPasswordFeedback"
+                          class="field-feedback mt-2"
+                        ></div>
+                      </div>
+
+                      <!-- Field 6: Terms & Conditions Checkbox (Requirements 3 & 4) -->
+                      <div class="auth-checkbox-group">
+                        <input
+                          type="checkbox"
+                          class="auth-check-input"
+                          id="regTerms"
+                          name="terms"
+                          required
+                        />
+                        <label for="regTerms" class="auth-check-label">
+                          I agree to Stackly's <a href="#">Terms of Service</a>,
+                          <a href="#">Privacy Policy</a>, and confidential
+                          non-disclosure provisions.
+                          <span class="required-star">*</span>
+                        </label>
+                      </div>
+
+                      <!-- Submit Button -->
+                      <button type="submit" class="auth-submit-btn">
+                        <span>Complete Registration</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </form>
+
+                    <!-- Switch to Login Alternative -->
+                    <div class="auth-form-footer">
+                      <p>
+                        Already have an authorized account?
+                        <a href="login.html">Sign In Here</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Page Bottom Secondary Back Link & Security Badge -->
+            <div
+              class="text-center mt-4 d-flex justify-content-center align-items-center gap-4 flex-wrap"
+            >
+              <a
+                href="../index.html"
+                class="back-home-btn"
+                style="background: rgba(255, 255, 255, 0.03)"
+              >
+                <i class="fa-solid fa-house"></i>
+                <span>Return to Home Page</span>
+              </a>
+              <span
+                style="font-size: 0.85rem; color: rgba(255, 255, 255, 0.45)"
+              >
+                <i class="fa-solid fa-shield-halved text-warning me-1"></i> SOC2
+                Type II Certified Data Protection
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Simple Page Footer -->
+    <footer class="auth-page-footer">
+      <div class="container">
+        <p class="m-0">
+          &copy; 2026 Stackly Corporate Profile. All Rights Reserved. Strategic
+          Business Advisory.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dedicated Auth JavaScript -->
+    <script src="../assets/js/auth.js"></script>
+  </body>
+</html>
