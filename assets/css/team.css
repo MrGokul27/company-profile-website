@@ -1,6 +1,4 @@
-/* ==========================================
-   Section 2: Executive Leadership Full Bios
-   ========================================== */
+/* Section 2: Executive Leadership Full Bios */
 .leader-featured-card {
   background: var(--white);
   border-radius: 24px;
@@ -372,9 +370,7 @@
   transform: translateY(-3px) scale(1.08);
 }
 
-/* ==========================================
-   Section 4: Advisory Board Card
-   ========================================== */
+/* Section 4: Advisory Board Card */
 .advisor-card {
   background: var(--white);
   border-radius: 16px;
@@ -420,9 +416,7 @@
   margin: 0;
 }
 
-/* ==========================================
-   Section 5: Culture & Work Environment
-   ========================================== */
+/* Section 5: Culture & Work Environment */
 .culture-pillar {
   background: var(--white);
   border-radius: 16px;
@@ -455,9 +449,7 @@
   margin: 0;
 }
 
-/* ==========================================
-   Section 6: Talent Telemetry & Demographics
-   ========================================== */
+/* Section 6: Talent Telemetry & Demographics */
 .talent-telemetry-section {
   position: relative;
   overflow: hidden;
@@ -550,9 +542,7 @@
   text-align: center;
 }
 
-/* ==========================================
-   Responsive Breakpoints
-   ========================================== */
+/* Responsive Breakpoints */
 @media (max-width: 991px) {
   .leader-featured-card .row {
     flex-direction: column !important;

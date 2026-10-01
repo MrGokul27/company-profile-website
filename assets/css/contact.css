@@ -1,141 +1,656 @@
-/* ==========================================================================
-   Company Profile Website - Contact Page Stylesheet
-   ========================================================================== */
-
-/* Contact Info Quick Cards */
+/* Section 2: Contact Info Quick Cards */
 .contact-info-card {
-    background: var(--white);
-    border-radius: 18px;
-    padding: 35px 28px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    text-align: center;
-    height: 100%;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 35px 28px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  text-align: center;
+  height: 100%;
 }
 
 .contact-info-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--box-shadow-hover);
-    border-color: var(--theme);
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--theme);
 }
 
 .contact-info-icon {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: var(--theme-light);
-    color: var(--theme);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    transition: var(--transition);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: var(--theme-light);
+  color: var(--theme);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  transition: var(--transition);
 }
 
 .contact-info-card:hover .contact-info-icon {
-    background: var(--theme);
-    color: var(--white);
-    transform: scale(1.1);
+  background: var(--theme);
+  color: var(--white);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .contact-info-card h4 {
-    font-size: 1.25rem;
-    margin-bottom: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
 }
 
 .contact-info-card p,
 .contact-info-card a {
-    font-size: 0.95rem;
-    color: var(--text);
-    margin: 0;
-    line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
 }
 
 .contact-info-card a:hover {
-    color: var(--theme);
+  color: var(--theme);
 }
 
-/* Contact Main Form Box */
+/* Section 3: Main Consultation Request Form & Office Details */
+
+/* Left Consultation Form Card */
 .contact-form-wrapper {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 45px;
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
+  position: relative;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 45px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.contact-form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--theme) 0%,
+    #e2cdb3 50%,
+    var(--theme) 100%
+  );
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.contact-form-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
+  border-color: rgba(182, 153, 116, 0.45);
+}
+
+.contact-form-wrapper:hover::before {
+  height: 5px;
+  opacity: 1;
 }
 
 .contact-form-wrapper .form-label {
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--header);
-    margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--header);
+  margin-bottom: 8px;
+  transition: color 0.25s ease;
 }
 
 .contact-form-wrapper .form-control,
 .contact-form-wrapper .form-select {
-    padding: 13px 18px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    font-size: 0.92rem;
-    color: var(--header);
-    transition: var(--transition);
+  padding: 13px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 0.92rem;
+  color: var(--header);
+  background-color: var(--white);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-form-wrapper .form-control:hover,
+.contact-form-wrapper .form-select:hover {
+  border-color: var(--theme);
+  background-color: #faf9f7;
 }
 
 .contact-form-wrapper .form-control:focus,
 .contact-form-wrapper .form-select:focus {
-    border-color: var(--theme);
-    box-shadow: 0 0 0 4px var(--theme-light);
+  border-color: var(--theme);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px var(--theme-light);
+  transform: translateY(-1px);
 }
 
-/* Location Card / Map Embed */
-.map-container {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    border: 1px solid var(--border-light);
-    height: 450px;
+.contact-form-wrapper .form-check-input {
+  cursor: pointer;
+  border-color: var(--border);
+  transition: var(--transition);
 }
 
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+.contact-form-wrapper .form-check-input:checked {
+  background-color: var(--theme);
+  border-color: var(--theme);
 }
 
-/* Office Hours Badge Card */
+.contact-form-wrapper .form-check-label {
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.contact-form-wrapper .form-check:hover .form-check-label {
+  color: var(--header) !important;
+}
+
+.contact-form-wrapper button[type="submit"] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-form-wrapper button[type="submit"] i {
+  transition: transform 0.3s ease;
+}
+
+.contact-form-wrapper button[type="submit"]:hover {
+  box-shadow: 0 10px 25px rgba(182, 153, 116, 0.38);
+  transform: translateY(-2px);
+}
+
+.contact-form-wrapper button[type="submit"]:hover i {
+  transform: scale(1.15) rotate(8deg);
+}
+
+/* Right Column: Office Hours Card */
 .office-hours-card {
-    background: linear-gradient(135deg, var(--header) 0%, var(--header2) 100%);
-    border-radius: 18px;
-    padding: 35px;
-    color: var(--white);
-    height: 100%;
+  position: relative;
+  background: linear-gradient(135deg, var(--header) 0%, var(--header2) 100%);
+  border-radius: 18px;
+  padding: 32px 30px;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.office-hours-card::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(
+    circle,
+    rgba(182, 153, 116, 0.25) 0%,
+    rgba(182, 153, 116, 0) 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.office-hours-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(7, 32, 50, 0.3);
+  border-color: rgba(182, 153, 116, 0.45);
+}
+
+.office-hours-card:hover::after {
+  transform: scale(1.4);
+  opacity: 0.9;
 }
 
 .office-hours-card h4 {
-    color: var(--white);
-    font-size: 1.35rem;
-    margin-bottom: 20px;
+  color: var(--white);
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+
+.office-hours-card .desk-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.office-hours-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .office-hours-card ul li {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.92rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  margin: 0 -12px;
+  border-radius: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.92rem;
+  transition: all 0.25s ease;
 }
 
 .office-hours-card ul li:last-child {
-    border-bottom: none;
+  border-bottom: none;
+}
+
+.office-hours-card ul li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  padding-left: 16px;
 }
 
 .office-hours-card ul li span.day {
-    color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
 .office-hours-card ul li span.time {
-    color: var(--theme);
-    font-weight: 700;
+  color: var(--theme);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: color 0.25s ease;
+}
+
+.office-hours-card ul li:hover span.time {
+  color: #f1dfca;
+}
+
+.highlight-pulse {
+  position: relative;
+  background: rgba(182, 153, 116, 0.2);
+  border: 1px solid rgba(182, 153, 116, 0.4);
+  padding: 3px 10px;
+  border-radius: 20px;
+  animation: activeGlow 2.5s infinite;
+}
+
+@keyframes activeGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(182, 153, 116, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 10px 2px rgba(182, 153, 116, 0.3);
+  }
+}
+
+/* Right Column: Fiduciary Protocol Card */
+.fiduciary-protocol-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px 26px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.fiduciary-protocol-card .protocol-icon-wrap {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--theme-light);
+  color: var(--theme);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: var(--transition);
+}
+
+.fiduciary-protocol-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--theme);
+  box-shadow: 0 15px 35px rgba(182, 153, 116, 0.16);
+}
+
+.fiduciary-protocol-card:hover .protocol-icon-wrap {
+  background: var(--theme);
+  color: var(--white);
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.fiduciary-protocol-card h5 {
+  color: var(--header);
+  font-size: 1.05rem;
+}
+
+/* Right Column: Office Visit Card (Fills Space) */
+.office-visit-card {
+  background: var(--white);
+  border-radius: 18px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.visit-card-media {
+  position: relative;
+  height: 155px;
+  overflow: hidden;
+}
+
+.visit-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.visit-badge-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  background: rgba(7, 32, 50, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse-dot-theme {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--theme);
+  box-shadow: 0 0 0 2px rgba(182, 153, 116, 0.3);
+}
+
+.visit-card-body {
+  padding: 22px 26px;
+}
+
+.visit-card-body h5 {
+  font-size: 1.08rem;
+  color: var(--header);
+}
+
+.visit-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.visit-pill {
+  background: var(--bg2);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--header);
+  transition: var(--transition);
+}
+
+.visit-pill:hover {
+  background: var(--theme-light);
+  border-color: var(--theme);
+  color: var(--header);
+  transform: translateY(-2px);
+}
+
+.office-visit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--theme);
+}
+
+.office-visit-card:hover .visit-card-img {
+  transform: scale(1.08);
+}
+
+/* Section 4: Location Card / Map Embed */
+.map-container {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-light);
+  height: 450px;
+  transition: var(--transition);
+}
+
+.map-container:hover {
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--theme);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Section 6: Emergency Crisis & Board Hotline Protocol Card */
+.crisis-hotline-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #faf8f5 60%, #f4eee6 100%);
+  border: 2px solid rgba(182, 153, 116, 0.35);
+  border-radius: 22px;
+  padding: 42px 48px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+}
+
+.crisis-hotline-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(182, 153, 116, 0.2) 0%,
+    rgba(182, 153, 116, 0) 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.crisis-hotline-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--theme);
+  box-shadow: 0 24px 50px rgba(182, 153, 116, 0.22);
+}
+
+.crisis-hotline-card:hover .crisis-hotline-glow {
+  transform: scale(1.4);
+  opacity: 0.95;
+}
+
+.crisis-badge-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.crisis-live-badge {
+  background: rgba(220, 53, 69, 0.08);
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  color: #dc3545;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.2px;
+}
+
+.crisis-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dc3545;
+  animation: liveCrisisPulse 1.8s infinite;
+}
+
+@keyframes liveCrisisPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 8px rgba(220, 53, 69, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+.crisis-sla-tag {
+  background: rgba(182, 153, 116, 0.12);
+  border: 1px solid rgba(182, 153, 116, 0.3);
+  color: var(--header);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.crisis-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--header);
+  line-height: 1.3;
+}
+
+.crisis-icon-anim {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.crisis-hotline-card:hover .crisis-icon-anim {
+  transform: scale(1.2) rotate(6deg);
+}
+
+.crisis-desc {
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.crisis-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.crisis-pill {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--header);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.crisis-pill:hover {
+  background: var(--header);
+  color: var(--white);
+  border-color: var(--header);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.crisis-pill:hover i {
+  color: var(--theme) !important;
+}
+
+.hotline-cta-btn {
+  background: linear-gradient(135deg, var(--theme) 0%, #9e8260 100%);
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 22px rgba(182, 153, 116, 0.35);
+  border-radius: 12px;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hotline-cta-btn i {
+  transition: transform 0.3s ease;
+}
+
+.hotline-cta-btn:hover {
+  background: linear-gradient(135deg, #a78964 0%, #8c7252 100%);
+  box-shadow: 0 12px 30px rgba(182, 153, 116, 0.55);
+  transform: translateY(-3px) scale(1.02);
+  color: var(--white);
+}
+
+.crisis-hotline-card:hover .hotline-cta-btn i {
+  animation: phoneRing 0.7s ease-in-out infinite;
+}
+
+@keyframes phoneRing {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .contact-form-wrapper {
+    padding: 35px 25px;
+  }
+
+  .crisis-hotline-card {
+    padding: 32px 24px;
+  }
+
+  .crisis-title {
+    font-size: 1.35rem;
+  }
+
+  .hotline-cta-btn {
+    width: 100%;
+    margin-top: 15px;
+  }
 }

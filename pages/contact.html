@@ -269,51 +269,106 @@
 
           <!-- Office Hours & Protocol Card -->
           <div class="col-lg-5">
-            <div class="d-flex flex-column gap-4 h-100">
+            <div class="d-flex flex-column gap-4">
+              <!-- Global Desk Hours Card -->
               <div class="office-hours-card">
                 <h4>
                   <i class="fa-solid fa-globe me-2 text-warning"></i> Global
                   Advisory Desk Hours
                 </h4>
-                <p class="text-white-50 small mb-3">
+                <p class="desk-subtitle small mb-3">
                   Our teams coordinate with leadership across all major
                   financial trading sessions.
                 </p>
                 <ul>
                   <li>
-                    <span class="day">London / UK Headquarters:</span>
+                    <span class="day"
+                      ><i class="fa-regular fa-clock me-2 text-warning"></i
+                      >London / UK Headquarters:</span
+                    >
                     <span class="time">09:00 - 18:00 GMT</span>
                   </li>
                   <li>
-                    <span class="day">Frankfurt & Zurich Hub:</span>
+                    <span class="day"
+                      ><i class="fa-regular fa-clock me-2 text-warning"></i
+                      >Frankfurt & Zurich Hub:</span
+                    >
                     <span class="time">09:00 - 18:00 CET</span>
                   </li>
                   <li>
-                    <span class="day">New York Desk:</span>
+                    <span class="day"
+                      ><i class="fa-regular fa-clock me-2 text-warning"></i>New
+                      York Desk:</span
+                    >
                     <span class="time">08:00 - 17:00 EST</span>
                   </li>
                   <li>
-                    <span class="day">Singapore APAC Center:</span>
+                    <span class="day"
+                      ><i class="fa-regular fa-clock me-2 text-warning"></i
+                      >Singapore APAC Center:</span
+                    >
                     <span class="time">09:00 - 18:00 SGT</span>
                   </li>
                   <li>
-                    <span class="day">Emergency Boardroom Desk:</span>
-                    <span class="time text-warning">24 / 7 Active</span>
+                    <span class="day"
+                      ><i class="fa-solid fa-bolt me-2 text-warning"></i
+                      >Emergency Boardroom Desk:</span
+                    >
+                    <span class="time highlight-pulse">24 / 7 Active</span>
                   </li>
                 </ul>
               </div>
 
-              <!-- Direct Protocol Box -->
-              <div class="p-4 bg-white rounded-4 shadow-sm border border-light">
-                <h5 class="fw-bold mb-2">
-                  <i class="fa-solid fa-shield-halved text-warning me-2"></i>
-                  Strict Fiduciary Discretion
-                </h5>
-                <p class="text-muted small mb-0">
-                  All information transmitted through this portal is safeguarded
-                  by 256-bit institutional encryption under UK and international
-                  commercial data regulations.
-                </p>
+              <!-- Direct Fiduciary Protocol Box -->
+              <div class="fiduciary-protocol-card">
+                <div class="protocol-icon-wrap">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="protocol-text">
+                  <h5 class="fw-bold mb-1">Strict Fiduciary Discretion</h5>
+                  <p class="text-muted small mb-0">
+                    All information transmitted through this portal is
+                    safeguarded by 256-bit institutional encryption under UK and
+                    international commercial data regulations.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Office Visit & Executive Briefing Card (Fills bottom space) -->
+              <div class="office-visit-card">
+                <div class="visit-card-media">
+                  <img
+                    src="../assets/images/about/about-heritage-img.webp"
+                    alt="Stackly Executive Briefing Suite"
+                    class="visit-card-img"
+                  />
+                  <div class="visit-badge-overlay">
+                    <span class="pulse-dot-theme"></span>
+                    <span>VIP & Boardroom Briefings</span>
+                  </div>
+                </div>
+                <div class="visit-card-body">
+                  <h5 class="fw-bold mb-1">Private Windsor HQ Delegations</h5>
+                  <p class="text-muted small mb-3">
+                    Complimentary VIP chauffeur transfer from London Heathrow
+                    (LHR) arranged for visiting corporate boards and executive
+                    committees.
+                  </p>
+                  <div class="visit-features-list">
+                    <span class="visit-pill"
+                      ><i class="fa-solid fa-fingerprint me-1 text-warning"></i>
+                      Biometric SCIF Access</span
+                    >
+                    <span class="visit-pill"
+                      ><i class="fa-solid fa-car-side me-1 text-warning"></i>
+                      LHR Transfer</span
+                    >
+                    <span class="visit-pill"
+                      ><i class="fa-solid fa-video me-1 text-warning"></i>
+                      Tier-4 Secure Link</span
+                    >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -450,27 +505,49 @@
          ========================================== -->
     <section class="section-padding">
       <div class="container">
-        <div
-          class="p-5 rounded-4 border border-warning"
-          style="background: var(--bg2); border-color: var(--theme) !important"
-        >
-          <div class="row align-items-center">
+        <div class="crisis-hotline-card">
+          <div class="crisis-hotline-glow"></div>
+          <div class="row align-items-center position-relative">
             <div class="col-lg-8">
-              <h3 class="fw-bold text-dark mb-2">
+              <div class="crisis-badge-wrap mb-3">
+                <span class="crisis-live-badge">
+                  <span class="crisis-pulse-dot"></span>
+                  Active Priority Crisis Line
+                </span>
+                <span class="crisis-sla-tag">
+                  <i class="fa-solid fa-bolt text-warning me-1"></i> Under
+                  15-Min Response SLA
+                </span>
+              </div>
+              <h3 class="crisis-title mb-2">
                 <i
-                  class="fa-solid fa-triangle-exclamation text-warning me-2"
+                  class="fa-solid fa-triangle-exclamation text-warning me-2 crisis-icon-anim"
                 ></i>
                 Urgent Boardroom or M&A Situation?
               </h3>
-              <p class="text-secondary mb-0">
+              <p class="crisis-desc mb-3">
                 For time-sensitive takeover defense, regulatory investigations,
                 or critical cybersecurity breaches, reach our emergency
                 executive hotline directly.
               </p>
+              <div class="crisis-features">
+                <span class="crisis-pill"
+                  ><i class="fa-solid fa-shield-halved me-1 text-warning"></i
+                  >End-to-End Encrypted</span
+                >
+                <span class="crisis-pill"
+                  ><i class="fa-solid fa-user-tie me-1 text-warning"></i>Senior
+                  Partner Direct</span
+                >
+                <span class="crisis-pill"
+                  ><i class="fa-solid fa-globe me-1 text-warning"></i>Worldwide
+                  Immediate Dispatch</span
+                >
+              </div>
             </div>
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-              <a href="#" class="theme-btn"
-                ><i class="fa-solid fa-phone me-2"></i> +91 9876543210</a
+              <a href="tel:+919876543210" class="theme-btn hotline-cta-btn"
+                ><i class="fa-solid fa-phone-volume me-2"></i> +91 9876543210</a
               >
             </div>
           </div>
