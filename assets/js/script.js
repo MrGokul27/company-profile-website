@@ -663,9 +663,66 @@ function init404Page() {
   }
 }
 
+// Theme Luxury Preloader Behavior (~2 Seconds Duration)
+function initPreloader() {
+  const preloader = document.getElementById("preloader");
+  if (!preloader) return;
+
+  const progressBar = document.getElementById("preloader-bar");
+  const counterText = document.getElementById("preloader-counter");
+  const targetDuration = 2000; // ~2 seconds
+  const startTime = performance.now();
+
+  // Prevent background scrolling while loading
+  document.body.style.overflow = "hidden";
+
+  function updateProgress(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progressRatio = Math.min(elapsed / targetDuration, 1);
+
+    // Smooth easeInOutQuad progression
+    const easeProgress =
+      progressRatio < 0.5
+        ? 2 * progressRatio * progressRatio
+        : 1 - Math.pow(-2 * progressRatio + 2, 2) / 2;
+
+    const percentage = Math.min(100, Math.floor(easeProgress * 100));
+
+    if (progressBar) {
+      progressBar.style.width = percentage + "%";
+    }
+    if (counterText) {
+      counterText.textContent = percentage + "%";
+    }
+
+    if (progressRatio < 1) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      if (progressBar) progressBar.style.width = "100%";
+      if (counterText) counterText.textContent = "100%";
+
+      // Complete progress and trigger elegant fade out
+      setTimeout(() => {
+        preloader.classList.add("fade-out");
+
+        // Restore scrolling and hide element after transition completes
+        setTimeout(() => {
+          preloader.style.display = "none";
+          document.body.style.overflow = "";
+        }, 750);
+      }, 150);
+    }
+  }
+
+  requestAnimationFrame(updateProgress);
+}
+
 // Initialize on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", async () => {
   "use strict";
+
+  // 0. Initialize preloader immediately
+  initPreloader();
 
   // 1. Determine paths and load external header & footer HTML component files
   const isRoot = !window.location.pathname
