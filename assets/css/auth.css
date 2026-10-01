@@ -22,6 +22,10 @@ body.auth-page-body {
   background: #0d131a;
 }
 
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+
 /* Background Ambient Glows */
 .auth-page-body::before {
   content: "";
