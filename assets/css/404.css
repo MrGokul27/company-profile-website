@@ -1,3 +1,28 @@
+/* Fixed Logo - Top Left */
+.error-logo {
+  position: fixed;
+  top: 20px;
+  left: 28px;
+  z-index: 999;
+  display: inline-block;
+  line-height: 0;
+}
+
+.error-logo img {
+  height: 42px;
+  width: auto;
+}
+
+@media (max-width: 576px) {
+  .error-logo {
+    top: 14px;
+    left: 16px;
+  }
+  .error-logo img {
+    height: 32px;
+  }
+}
+
 /* Main 404 Section Wrapper */
 .error-404-section {
   position: relative;
