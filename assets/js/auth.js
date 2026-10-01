@@ -636,4 +636,35 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     });
   }
+
+  // -------------------------------------------------------------
+  // 6. Global Empty / '#' Link Redirection to 404 Page
+  // -------------------------------------------------------------
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    const rawHref = link.getAttribute("href");
+    if (
+      link.hasAttribute("data-bs-toggle") ||
+      link.hasAttribute("data-bs-target")
+    ) {
+      return;
+    }
+
+    if (
+      rawHref === null ||
+      rawHref.trim() === "" ||
+      rawHref.trim() === "#" ||
+      rawHref.trim() === "#!" ||
+      rawHref.trim() === "javascript:void(0)" ||
+      rawHref.trim() === "javascript:;"
+    ) {
+      e.preventDefault();
+      const isRoot = !window.location.pathname
+        .replace(/\\/g, "/")
+        .includes("/pages/");
+      window.location.href = isRoot ? "404.html" : "../404.html";
+    }
+  });
 });

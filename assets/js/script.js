@@ -303,6 +303,222 @@ function initVideoModal() {
   });
 }
 
+// Global Handler: Redirect empty links or '#' to 404 page across the whole project
+function initEmptyLinksRedirection() {
+  const isRoot = !window.location.pathname
+    .replace(/\\/g, "/")
+    .includes("/pages/");
+  const notFoundPage = isRoot ? "404.html" : "../404.html";
+  const is404Page = window.location.pathname
+    .replace(/\\/g, "/")
+    .endsWith("404.html");
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    // Check raw href attribute
+    const rawHref = link.getAttribute("href");
+
+    // Do not intercept active modal closers or functional tab buttons if any
+    if (
+      link.hasAttribute("data-bs-toggle") ||
+      link.hasAttribute("data-bs-target")
+    ) {
+      return;
+    }
+
+    // Intercept empty href, '#', '#!', 'javascript:void(0)', or 'javascript:;'
+    if (
+      rawHref === null ||
+      rawHref.trim() === "" ||
+      rawHref.trim() === "#" ||
+      rawHref.trim() === "#!" ||
+      rawHref.trim() === "javascript:void(0)" ||
+      rawHref.trim() === "javascript:;"
+    ) {
+      e.preventDefault();
+      if (!is404Page) {
+        window.location.href = notFoundPage;
+      }
+    }
+  });
+}
+
+// 404 Page Specific Features (Go Back handler & Interactive Search Directory)
+function init404Page() {
+  // Go Back Button
+  const goBackBtn = document.getElementById("goBackBtn");
+  if (goBackBtn) {
+    goBackBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (
+        window.history.length > 1 &&
+        document.referrer &&
+        !document.referrer.endsWith("404.html")
+      ) {
+        window.history.back();
+      } else {
+        const isRoot = !window.location.pathname
+          .replace(/\\/g, "/")
+          .includes("/pages/");
+        window.location.href = isRoot ? "index.html" : "../index.html";
+      }
+    });
+  }
+
+  // Interactive Search / Quick Directory
+  const searchInput = document.getElementById("errorSearchInput");
+  const searchBtn = document.getElementById("errorSearchBtn");
+  const searchResults = document.getElementById("errorSearchResults");
+
+  if (searchInput && searchBtn && searchResults) {
+    const isRoot = !window.location.pathname
+      .replace(/\\/g, "/")
+      .includes("/pages/");
+    const prefix = isRoot ? "pages/" : "";
+    const rootPrefix = isRoot ? "" : "../";
+
+    const directory = [
+      {
+        name: "Homepage - Strategic Overview",
+        url: rootPrefix + "index.html",
+        tags: ["home", "main", "start", "corporate", "stackly"],
+      },
+      {
+        name: "About Us - Heritage & Mission",
+        url: prefix + "about.html",
+        tags: ["about", "heritage", "story", "mission", "values", "culture"],
+      },
+      {
+        name: "Services - Corporate Practices & Advisory",
+        url: prefix + "services.html",
+        tags: [
+          "services",
+          "advisory",
+          "consulting",
+          "m&a",
+          "strategy",
+          "digital",
+          "esg",
+          "cybersecurity",
+        ],
+      },
+      {
+        name: "Portfolio - Case Studies & Transaction Outcomes",
+        url: prefix + "portfolio.html",
+        tags: [
+          "portfolio",
+          "projects",
+          "cases",
+          "case studies",
+          "outcomes",
+          "work",
+        ],
+      },
+      {
+        name: "Leadership - Managing Partners & Directors",
+        url: prefix + "team.html",
+        tags: [
+          "leadership",
+          "team",
+          "executives",
+          "partners",
+          "directors",
+          "people",
+        ],
+      },
+      {
+        name: "Executive Insights & Analysis Briefings",
+        url: prefix + "blog.html",
+        tags: [
+          "insights",
+          "blog",
+          "articles",
+          "news",
+          "reports",
+          "macroeconomic",
+          "analysis",
+        ],
+      },
+      {
+        name: "Contact Us - Global Advisory Inquiry",
+        url: prefix + "contact.html",
+        tags: [
+          "contact",
+          "inquiry",
+          "email",
+          "office",
+          "locations",
+          "call",
+          "consultation",
+          "reach",
+        ],
+      },
+      {
+        name: "Client Portal Login",
+        url: prefix + "login.html",
+        tags: ["login", "portal", "signin", "auth", "client"],
+      },
+      {
+        name: "Client Portal Registration",
+        url: prefix + "register.html",
+        tags: ["register", "signup", "onboarding", "join"],
+      },
+    ];
+
+    const performSearch = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      if (!query) {
+        searchResults.innerHTML = "";
+        searchResults.classList.remove("active");
+        return;
+      }
+
+      const matches = directory.filter(
+        (item) =>
+          item.name.toLowerCase().includes(query) ||
+          item.tags.some((tag) => tag.includes(query)),
+      );
+
+      if (matches.length === 0) {
+        searchResults.innerHTML = `
+          <div style="padding: 10px 12px; color: rgba(255,255,255,0.6); font-size: 0.88rem;">
+            <i class="fa-solid fa-circle-info text-warning me-2"></i> No specific direct match found for "<strong>${query}</strong>". Explore our <a href="${prefix}services.html" style="color: var(--theme); text-decoration: underline;">Practices</a> or <a href="${prefix}contact.html" style="color: var(--theme); text-decoration: underline;">Contact Desk</a>.
+          </div>
+        `;
+        searchResults.classList.add("active");
+      } else {
+        searchResults.innerHTML = matches
+          .map(
+            (item) => `
+          <a href="${item.url}" class="error-search-item">
+            <span><i class="fa-solid fa-file-lines text-warning me-2"></i> ${item.name}</span>
+            <i class="fa-solid fa-arrow-right" style="font-size: 0.8rem;"></i>
+          </a>
+        `,
+          )
+          .join("");
+        searchResults.classList.add("active");
+      }
+    };
+
+    searchInput.addEventListener("input", performSearch);
+    searchBtn.addEventListener("click", performSearch);
+
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        performSearch();
+        const firstMatch = searchResults.querySelector(".error-search-item");
+        if (firstMatch) {
+          firstMatch.click();
+        }
+      }
+    });
+  }
+}
+
 // Initialize on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", async () => {
   "use strict";
@@ -328,6 +544,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initMobileMenu();
   initScrollTop();
   initForms();
+  initEmptyLinksRedirection();
+  init404Page();
 
   // 3. Initialize page-specific features
   initCounters();
