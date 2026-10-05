@@ -717,6 +717,49 @@ function initPreloader() {
   requestAnimationFrame(updateProgress);
 }
 
+// Scroll Reveal Animations for sections across non-excluded pages
+function initScrollReveal() {
+  const currentPath = window.location.pathname
+    .replace(/\\/g, "/")
+    .toLowerCase();
+  const excludedPages = [
+    "dashboard.html",
+    "404.html",
+    "login.html",
+    "register.html",
+  ];
+
+  // Exclude dashboard, 404, login, and register pages
+  const isExcluded = excludedPages.some((p) => currentPath.endsWith(p));
+  if (isExcluded) return;
+
+  const revealElements = document.querySelectorAll(".reveal, [data-reveal]");
+  if (revealElements.length === 0) return;
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px 0px -40px 0px",
+    threshold: 0.08,
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealElements.forEach((el) => {
+    const customDelay = el.getAttribute("data-reveal-delay");
+    if (customDelay) {
+      el.style.transitionDelay = `${customDelay}ms`;
+    }
+    revealObserver.observe(el);
+  });
+}
+
 // Initialize on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", async () => {
   "use strict";
@@ -752,4 +795,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initCounters();
   initPortfolioFilter();
   initVideoModal();
+
+  // 4. Initialize scroll reveal animation system
+  initScrollReveal();
 });
